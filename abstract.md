@@ -1,7 +1,3 @@
 # Abstract
 
-Provide a concise summary of your proposed research of approximately 250
-words. The abstract does _not_ serve as or replace the introduction; consider
-it a summary of the entire document. It makes sense to wait to write the abstract
-until the rest of the document has been written. Write your abstract using
-the `abstract.md` file, and the template will automatically include it.
+Recent statistics showed that 75% of applicants nowadays are filtered out from applicant pools for a position by Applicant Tracking System, due to the inflexibility of machines in understanding differemt resume formats and synonyms. Lander is a text-mining based tool that helps the student increase their chance of passing the initial resume screening round by optimizing their resume using a keyword-suggesting system. Moreover, Lander will also match a candidate to a compatible job by matching the experiences in their resume to a job description, and in return, increase the chance of getting accepted into such job.
