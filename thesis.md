@@ -34,6 +34,7 @@ To be continue:
 As a candidate, they really doesn’t know what exactly ATS is looking for
 
 - How lander can help candidate surpass this system?
+
 ## Current State of the Art
 
 ![Work Flow](images/currentstate.png)
