@@ -2,7 +2,7 @@
 # https://maehr.github.io/academic-pandoc-template/
 
 # Project-specific values
-title: 'Lander - A text-ming tool evaluating resumes and job position fit.'
+title: 'Lander - A text-mining tool evaluating resumes and job position.'
 author: 'Mai Nguyen Dac'
 date: '20 November 2022'
 firstreader: 'Professor Douglas Luman'
