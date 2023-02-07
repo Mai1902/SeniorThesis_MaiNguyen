@@ -182,7 +182,7 @@ Unlike Resume Scan, Job Scan is an actual published ATS-counter application that
 
 #### Methodology
 
-Even though Job Scan doesn't publish a paper to describe their workflow and there has been zero scholarly published paper on this tool, this application has been recommended by numerous experienced job coaches. Jobscan giving resume matching score by conducting a comprehensive analysis of candidate's hard skills, education, job title, soft skills, other keywords [@steph_2022]. Other metrics such as word count, words to avoid, section headings, file type, format, and seniority level match is also incorporated in the Scan Report.
+Even though Job Scan doesn't publish a paper to describe their workflow and there has yet been a scholarly published paper on this tool, this application has been recommended by numerous experienced job coaches. Jobscan giving resume matching score by conducting a comprehensive analysis of candidate's hard skills, education, job title, soft skills, other keywords [@steph_2022]. Other metrics such as word count, words to avoid, section headings, file type, format, and seniority level match is also incorporated in the Scan Report.
 
 ![Example of Jobscan Result](images/jobscan_example.png)
 
@@ -202,22 +202,135 @@ Despite the tremendous benefit of Jobscan, Steph Cartwritght, a Job Search Strat
 
 # Method of approach
 
-This chapter answers the "how" question - how did you complete your project,
-including the overall design of your study, details of the algorithms and tools you
-have used, etc.  Use technical diagrams, equations, algorithms, and paragraphs of text
-to describe the research that you have completed. Be sure to number all figures and
-tables and to explicitly refer to them in your text.
+## Evaluation of existed approach
 
-This should contain:
+TODO: List out drawbacks of JobScan, and ResumeWorded and how to avoid this limitation
 
-* lists
-* with points
-* and more points
-  * possibly subpoints
 
-For those projects whose implications address social or moral issues (i.e. ethical
-standards, causes, effects), you will want to use this section to describe how you
-actively mitigated or considered these issues.
+## Approach proposal and reasoning
+
+After a thorough assessment of several existed platforms which dedicate to supporting candidate in resume optimizing and career recommendating, one of the most significant problems with these platforms is monetization, as these platforms modifying the scanning output in order to lure client to upgrade their plan. Lander is an all-in-one job-seeking assistant which is, and will always, remains free and accessible for anyone. The heart of this platform is the evaluation of job fit using two metrics: Spacy Phrase Matching Score and Cosine Similarity Score. 
+
+## System Design
+
+![Lander Workflow](images/Lander_workflow.png)
+
+Lander workflow consists of four stages, including:
+
+- Data Processing: This stage perform data cleansing on job bank to ensure all entries are consistent. Then the databased will be clustered into groups based on different skills requirements.
+
+- Scoring System: This stage calculate the matching score between a resume and every job in one cluster usiing Phrase Matching and Cosine Similarity technique
+
+- Reccommendation System: This stage sort the matching score across one cluster and return the top 5 of each metrics, then return the important phrase in a chosen job which has yet been mentioned in the resume
+
+- Return Matches: This stage return the list of matched jobs with job title, job description, links to job, and missing key phrase.
+
+### Data Preparation: Preparing data for resume scanning
+
+1. Data retrieving
+
+The very first step of creating an automated job scanning tool is collecting data, specifically sample Job Description in multiple different field of technical occupation and real resumes. This paper uses a 22000 entries job banks from Kaggle which is scraped from Dice.com, a real job dashboard. This job banks includes 12 data columns representing 12 key information of a job post. Additionally, a collection of 5 real resumes from the author and an open source Github repo is utilized in this project for experimenting purpose; these resumes correspond to a different seniority level in the tech field. Since the format of all the resume and are PDF, PyPDF2 is used to extract the text from resume. For the job banks, the Panda library is the main mean of extracting and storing the database. The very first step is slicing the dataframe into a sub dataframe which only consists of important data for calculation, which are: `Job Title`, `Job Description` and `Skills`. 
+
+2. Data cleaning
+
+After the extracted data is stored into the data frame, the next essential step is to abolish unnecessary component from the data. `re` library, abbreviation of regular expression, is the library mainly use for finding a string or a set of string using special regex pattern; such library is useful in locating special punctuation, new line, other meaningless text in the document and replace them with white space. In this case, all redundant information is ommited from the important dataframe, including empty cell, or `Skills` cell with a value of "See Job Description", "See Below",...
+
+Example of one cleansing step
+```
+# Filter out token that only contain letter, + sign,underscore, and number
+  for token in tokens:
+    if re.search("^[A-Za-z0-9+_-]*$", token):
+      filtered_tokens.append(token)
+  stems = [stemmer.stem(t) for t in filtered_tokens]
+  return stems, filtered_tokens
+
+```
+3. Data processing and final checking
+
+In this stage, the data frame will become a simple and consistent format for further advanced analysis. The process include 3 steps:
+
+-  Word tokenization: turn long text in resume and job description into token (single word) to make the analyzing process easier using Scipy
+
+- Stop words: Remove word that are meaningless for resume scanning and job description processing but tends to appear a lot. NLTK library have a built-in list of stop words that was utilized in this project
+
+- Lemmatization: Globalizing the input entry by returning the text into its meaningful base form using WordNetLemmatizer
+
+#### K-Mean Clustering
+
+By definition, K-means algorithm automatically group data points in to predefined k clusters by ensuring the mean distance of every points each cluster to the centroid is minimum. The first step of this algorithm is selecting the number of cluster that this project want to identify, which is 37 from the result of Sihouete Analysis; hence, we have k = 37. The clustering of jobs base on skills is important as this act will improve the efficiency and run time for Lander. In which 22000 entries will be divided into 70 clusters, then the resume text will be fed in and Kmean Prediction matches the resume into a certain cluster. Then, the calculation of matching score will occur within that one only instead of the whole dataframe.
+
+```
+km = KMeans(n_clusters=num_clusters)
+
+km.fit(tfidf_matrix)
+
+clusters = km.predict(tfidf_matrix)
+
+```
+
+![Cluster with Matched Job Sample](images/Cluster_Sample.png)
+### Matching Metrics
+
+After the the resume is matched into one cluster, further matching methods is performed using two metrics: Phrase Matching and Cosine Similarity.
+
+#### Scoring bases on Phrase Matching
+
+The matcher is a rule-matching engine in spaCy that works with tokens in the same way as regular expressions and Phrase Matching is a rule-based phrase matcher.  The rules can reference token annotations. This tool helps match extensive terminology collections, which is the key phrase of the resume and job description. The source code for matching is provided below:
+
+
+```
+def keyword_matching(text_resume, text_jd):
+    # Generate matcher pattern by extracting keywords from job description
+    rake = Rake()
+    matcher = PhraseMatcher(master.vocab)
+    rake.extract_keywords_from_text(text_jd)
+    jd_keyword = rake.get_ranked_phrases()
+    jd_keyword_count = Counter(jd_keyword)
+    patterns = [master.make_doc(k) for k in jd_keyword]
+    matcher.add("Spec", patterns) 
+
+    # Matching the keyword in job description with resume
+    text_resume = master(text_resume)
+    matches = matcher(text_resume)
+    match_keywords = [text_resume[start:end] for _, start, end in matches]
+
+    # Count the amount of word matched and matching frequency
+    matcher_report = Counter(match_keywords)
+
+    # Calculate the keyword matching percentage between job description and resume
+    matched_amount = len(matcher_report.keys())
+    jd_keyword_amount = len(jd_keyword_count.keys())
+    matcher_percentage = (matched_amount/jd_keyword_amount)*100
+
+    return match_keywords, matcher_percentage
+
+```
+
+The keywords from job description is extracted using Rake library, and the base rule for matching pattern in here is constructed by key phrase from job description. Then, spacy will use this pattern to find all similar phrase in resume. After all similar key phrase is identify, the matching percentage is calculated by: 
+
+```
+ matching percentage = (Amount of keyword matched / Amount of keyword in Job Description)*100
+```
+#### Scoring bases on Similarity
+
+After obtaining the clean data set, the first advance analyzer the evaluation of document similarity between the Job Description document and the resumes entry using TF-IDF Cosine document similarity. TF, the abbreviation of Term frequency, represents the appearance frequency of a specific word in the document, IDF, the ab- breviation of Inverse Document Frequency, is used to determine the necessary of a term across every entry documents.
+
+IDF is calculated by:
+
+![IDF Formula](images/IDF_Formula.png)
+
+Then, TF*IDF will be calculated, this term will represent the degree of relevant between a word, or query, and a document. Finally, the similarity of two document will evaluate by using Cosine similarity. This concept turn each document into vector and this vector will be visualize using vector space.
+
+For example, Cosine similarity between a resume (R) and a job description (JD) is calculated by:
+
+```
+Cosine similarity (R, JD) = (R)( ̇JD) |JD|×|R|
+```
+In the vector space, the closer the cosine value to 1, the smaller the angle between vector and x-axis, the higher correlation between two documents. Even though, the theoretical explanation of TF-IDF Cosine document similarity seems complicated, this paper will not manually implement every single step of this concept. Instead, this paper optimizes the use of Sklearn, or Sckit-learn, which is a library that include a tremendous amount of essential Machine learning tools, inluding TF-IDF document similarity algorithm.
+
+## Current behavior
+
+
 
 # Experiments
 
