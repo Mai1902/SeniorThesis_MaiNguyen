@@ -263,7 +263,19 @@ After this stage, a data frame called `data_eval` is formed, which consists of p
 
 #### K-Mean Clustering
 
-After the `data_eval` data frame is formed, the 22 000 entries in the job banks will be categorized into different group using K-Mean cluster algorithm. By definition, K-means algorithm automatically group data points in to predefined k clusters by ensuring the mean distance of every points each cluster to the centroid is minimum. The first step of this algorithm is selecting the number of cluster that this project want to identify, which is 37 from the result of Sihouete Analysis; hence, we have k = 37. The clustering of jobs base on skills is important as this act will improve the efficiency and run time for Lander. In which 22000 entries will be divided into 70 clusters, then the resume text will be fed in and Kmean Prediction matches the resume into a certain cluster. Then, the calculation of matching score will occur within that one only instead of the whole dataframe.
+After the `data_eval` data frame is formed, the 22 000 entries in the job banks will be categorized into different group using K-Mean cluster algorithm. By definition, K-means algorithm automatically group data points in to predefined k amount of clusters by ensuring the mean distance of every points each cluster to the centroid is minimum. The first step of this algorithm is selecting the number of cluster that this project want to identify, which is 26 from the result of Elbow Analysis; hence, we have k = 26. 
+
+As the K-Cluster model relies on the quantified data points to determine centroid and its members, the text in `Skills` section need to turn to vector prior to the clusteration. 
+
+```python
+data_forfit = data_eval['skills']
+tfidf_vectorizer = TfidfVectorizer(sublinear_tf = True, min_df = 0.001, 
+                                  use_idf=True, stop_words= 'english')
+tfidf_matrix = tfidf_vectorizer.fit_transform(data_forfit)
+```
+Instead of transforming skills text into regular vector, `TF-IDF Vectorizer` allows the vector value represent the weight of the text in the database and help normalized the matrix later on. After the conversion, the cluster procedures is performed.
+
+The clustering of jobs bases on skills is important as this act will allocate the candidate into a cluster of job title, as well as improveing the efficiency of matching calculation for Lander. In which 22000 entries will be divided into 26 clusters, then the resume text will be fed into the model and Kmean Prediction matches the resume into a certain cluster. Then, the calculation of matching score will occur within that one only instead of the whole dataframe.
 
 ```python
 km = KMeans(n_clusters=num_clusters)
@@ -275,6 +287,8 @@ clusters = km.predict(tfidf_matrix)
 ```
 
 ![Cluster with Matched Job Sample](images/Cluster_Sample.png)
+
+The graphic above show the sample of a cluster in Lander and the job titles which corresponds to such a cluster. For example, the top keywords appear in Cluster 14 are peoplesoft, salesforce, design, cloud, thus, a job that invloves a large portion of human interaction or creativity-oriented job title should match to this Cluster. Base on the algorithms, some of the job title in the job bank that is categorized into this cluster are: Business Solution Architect, Open Stack Engineer, which are very close to the projection.
 
 ### Matching Metrics
 
@@ -314,13 +328,16 @@ def keyword_matching(text_resume, text_jd):
 
 ```
 
-The keywords from job description is extracted using Rake library, and the base rule for matching pattern in here is constructed by key phrase from job description. Then, spacy will use this pattern to find all similar phrase in resume. After all similar key phrase is identify, the matching percentage is calculated by: 
+The very first step of phrase matching algorithm is extracting keywords from job description columns in the database using Rake-NLTK library. Rake is a well-known library that utilizes the complex Natural Language Processing approach of NLTK library to perform the most efficient keyword extraction method. After the keyword extraction step, the based rule for matching pattern is constructed using the keywords from job description. Then, spaCy uses this pattern to find all similar phrase in the provided resume. After all similar key phrase is identify, the matching percentage is calculated by: 
 
 ```
                               Amount of keyword matched
  matching percentage = _________________________________________  x 100
                          Amount of keyword in Job Description
 ```
+
+The matching percentage score will then be added to the final data frame as a new column called `Matching Percentage`. Then, the top five titles that yield the highest percentage score are sliced from the big data frame for further evaluation.
+
 #### Scoring bases on Similarity
 
 After obtaining the clean data set, the first advance analyzer the evaluation of document similarity between the Job Description document and the resumes entry using TF-IDF Cosine document similarity. TF, the abbreviation of Term frequency, represents the appearance frequency of a specific word in the document, IDF, the ab- breviation of Inverse Document Frequency, is used to determine the necessary of a term across every entry documents.
@@ -334,11 +351,14 @@ Then, TF*IDF will be calculated, this term will represent the degree of relevant
 For example, Cosine similarity between a resume (R) and a job description (JD) is calculated by:
 
 ```
-                    Cosine similarity (R, JD) = (R)( ̇JD) |JD|×|R|
+            Cosine similarity (R, JD) = (R)( ̇JD) |JD|×|R|
 ```
 In the vector space, the closer the cosine value to 1, the smaller the angle between vector and x-axis, the higher correlation between two documents. Even though, the theoretical explanation of TF-IDF Cosine document similarity seems complicated, this paper will not manually implement every single step of this concept. Instead, this paper optimizes the use of Sklearn, or Sckit-learn, which is a library that include a tremendous amount of essential Machine learning tools, inluding TF-IDF document similarity algorithm.
 
-## Challenges
+### Keyword suggestions
+
+## Challenges: Time complexity of algorithm
+
 
 
 
