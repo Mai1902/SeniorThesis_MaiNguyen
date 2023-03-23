@@ -513,19 +513,75 @@ Furthermore, JobScan may increase matching score out of context, as evidenced by
 
 # Conclusion
 
-Traditionally, this chapter addresses the areas proposed below as sections, although
-not necessarily in this order or organized as offered. However, the last section --
-"Ethical Implcations" is required for this chapter. See the heading below for more
-details.
-
 ## Summary of Results
+
+### Comprehensive dataset on technology related skills
+
+In this project, one of the most prominent outcome is the extracted skills set of every technology related work. This dataset can be important for other text mining project regarding occupational skills in general and technological skills on particular. One may used this list to build predictions model on finding list of skills in a job given only job title or predicting the changes in skills for each job title across a period of time. 
+
+### Some scheme to improve time complexity in text mining task
+
+Due to the large amount of text that this project has to processed, time expensive procedures is inevitable. One of the biggest challenge this project has to overcome was the massive time complexity. However, after trials of failure, several scheme to help resolve time complexity issue is as follow:
+
+- Pre process the input dataset by performing every static procedures such as word extraction, stemming, lemmatizing, tokenizing and store it in the input data prior to actual procedure.
+
+- The Phrase Matcher algorithms of spacy is exponentially faster than finding term using regex rules-based.
+
+- It is true that Spacy is faster than NLTK in most of the case, but it only occurs if unnecessary pipelines to the procedures are disabled when loading the  `en_core_web_sm` model, if not, this model will perform every single pipeline and ended up take longer time compare to the same function using NLTK.
+
+- Cosine Similarity function in NLTK is exponentially faster compare to similarity function in spacy if perform on text that lemmatization is not important. The reason is similarity function in spacy perform lemmatization no matter what, and this procedure take most of the time in the function.
+
+- Streamlit is very slow, especially if some beauty special effect is added. It is important to add `st.cache` decoration to expensive operation to prevent streamlit rerun it everytime. 
+
+### Lander outcomes
+
+Based on the experiment, it is logical to conclude that using Lander will help user to increase the matching score in various job titles by some amount. Lander provides this service for free whilst it will cost 50$ per month for Job Scan to help scanning resume and suggest missing keyword. Nonetheless, the actual impact of Lander can only be examine if a group of students actually use it and apply for job using the edited resume. Besides increase matching percentage, the job titles matching in resume was also deemed to be reasonable, but also remain unjustified by an actual experiment. However, Lander successfully produce the outcome introduced in the first chapter, in which it help students to navigate the job position fit and giving suggestion for them to elevate their resume. 
 
 ## Future Work
 
+### Continuously update the dataset
+
+The last time this dataset was updated on Kaggle was last year, which means this job dataset can only give suggestion purpose, not actually introduce student to an opened position in the mean time. Given the scope of this dataset is technology job, which is prone to change abruptly at any time due to the fast-paced nature of this industry. Thus, the skills set of certain job in this dataset may be considered obsolete to the required skills in the same job title today. Hence, it is important to continuously update this dataset by the actual open job post recently by scraping live data from dice.com or other job portal website such as Indeed, ZipRecruiter, etc. 
+
+After the dataset is updated, the keyword extraction procedure should be perform again, and job post expired after every 6 months should be archive and removed from the dataset to preserve the relevance of skills set. By this way, the job suggestion and skill suggestion model will yield a better result.
+
+### Expand search outside of technical related job
+
+As of right now, the only type of job that Lander can help process is techical related job; however, this project actually started out with the purpose to help any struggle job seeker, especially graduating students to figure out the suitable occupation based on their skills and help them with the application process. However, the time complexity of text mining procedures is beyond imagination, which may leads to bad user experience if every type of job is included. 
+
+However, it is feasible to help non-technical students to identify missing keyphrase in their resume for a specific job description provided by them. This feature can be perform if a complete dataset of important skill sets across all prominent job title nowaday exist. This dataset can be manually extracted from various career education website as well. Once this dataset is formed, the step to identify missing keyphrase is as follow:
+
+- Step 1: Extract all keyphrase from the input job description using Phrase Matcher, with each skill in the complete dataset is search token. 
+
+- Step 2: Use Phrase Matcher to find matched phrase in user's resume and job description, with each keyphrase from step 1 is a seach token
+
+- Step 3: Return missing keyphrase by excluding matched keyphrase.
+
+Nevertheless, an optimal approach for job position match procedure for other job outside of tech has yet been discovered by this paper in the mean time.
+
+### Build the tool on other web interface
+
+As streamlit is quite slow when processing keyphrase matching procedure, the expand of dataset later on or any attemp to add more feature to Lander may slow this tool down even more, which will excarcebate user experience. Thus, it is important to migrate Lander to other web interface framework such as Dash, which is quite similar to Streamlit but not entirely open-source, or Flask, which is open-source but much more complicated to build compare to Streamlit.
+
 ## Future Ethical Implications and Recommendations
 
-Especially as pertains to the public release or use of your software or methods, what
-unresolved or special issues remain? What recommendations might you make?
+### Data collection issue: 
+
+The database used for Lander is adopted from Kaggle, and this dataset is scraped from Dice.com, a job board website. Even though dice allows scraping and Kaggle provides open source dataset, this tool will use this database to support job seeker and may direct the user directly to the original job post, not to dice.com, which may reduce the revenue of this job board website. However, as the dataset is obsolete and the majority of the job in the dataset are expired, the job title in the output is only a suggestion for the type of job, not to that specific job position itself. 
+
+### Potential social issue: 
+
+This tool helps job seeker to identify suitable jobs and leverage their resume using algorithms, posing a critical question: Will ATS/recruiter discriminate against candidates who use this tool? Whilst this tool is newly created and has yet to come to ATS/recruiter sights, there hasn't been any research paper or blog post discuss on this issue on a somewhat similar tool like JobScan. JobScan does not only help to optimize resume but also help to elevate complete application portal such as cover letter, social medias, LinkedIn, etc and also provide some hidden tips to overcome several specific ATS. Hence, recruiter or ATS software in general may not hold inhospitable viewpoint on ATS-counter software. 
+
+### Potential misuse - unintended consequence:
+
+Another controversial issue posed by this tool is: Does Lander tell people to lie, as candidate may include the keyword that are not applied to them? Whilst there is no way to ensure that no Lander user would exploit this tool to lie about their competency, this tool has no intend to encourage people to do so. Additionally, these candidates will be disqualified later on in the later stage of recruiting process so if candidates are dishonest about their skills, there will be no critical impact on such an act. 
+
+Additionally, Lander is a tool to help people counter the unfair system that ATS introduced, as it relies on the already biased historical recruiting data to make new hiring decision or it may look for some certain keywords that user forgot, or deemed unnecessary to put into their resume.
+
+### Information privacy: 
+
+As an application that prompting resume and other private information from user, it is prone to have confidentiality problem. So, there is a need to make sure that the information in the resume is secured. In Lander, this tool is built without a data storing end, means whatever input user provide will be removed after their session. This action will ensure that Lander does not and will not have any intention to retain user's confidential data for commercial or profit usage.  
 
 ## Conclusions
 
