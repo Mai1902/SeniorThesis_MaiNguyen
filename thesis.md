@@ -426,18 +426,90 @@ The time complexity is then reduced by disabling unwanted pipeline while loading
 
 # Experiments
 
-This chapter describes your experimental set up and evaluation. It should also
-produce and describe the results of your study. The section titles below offer
-a typical structure used for this chapter.
+To reinterate, the optimal purpose of this tool is to help students or those who wish to pass through the resume scanning round in the age of technology-driven recruiting. The tool outcome returns a list of keyword suggestion that if user include these keywords in there resume, their chance of getting pass ATS is higher. It is best to verify the matching score difference for a resume before and after utilizing Lander using an ATS software to see if such an increment is occurring or not. Nevertheless, after doing extensive research on various ATS software, it became clear that students would not be able to afford their service because ATS is a blackbox program that discourages other people from trying to conduct research. No matter how small the size of an ATS software may be, only legitimate businesses are allowed to buy and utilize it. This choice is comprehensible given that ATS is a comprehensive recruiting site that assists with storing candidate data, sending out announcements, monitoring the recruitment process, etc. in addition to being a resume scanner.
+
+As ATS cannot be utilized for experimental purposes, utilizing alternative software that mimics the ATS scanning technique and generates some form of matching score for further quantitative evaluation is the other proper resort. Hence, Jobscan, which was extensively discussed in Chapter 2, will be used to evaluate Lander's accuracy. The reasons behind Job Scan is the ideal choice in this circumstance is this software has more than 1 million job seekers as clients, it is also an actual publicized ATS-counter tool, which has been acknowledged publically by job hunt coach as one of the useful apps to counter ATS algorithm.. According to Jobscan, clients generally see a 30% improvement in their own resume scanning round passing rate. Furthermore, Chapter 2 revealed that Job Scan is designed to outperform particular ATS programs because they are aware of a secret layer of real ATS products. So, in this scenario, Lander can be tested using Job Scan.
 
 ## Experimental Design
 
-Especially as it pertains to responisble computing, if conducting experiments or
-evaluations that involve particular ethical considerations, detail those issues here.
+### Primary experiment: Does Lander actually boost matching score?
+
+One of the most important metric to evaluate the efficiency of Lander is if the addition of suggested keyword actually improve matching score of a resume to a job or not.  In order to achieve so, the experiment will run through 15 distinct trials employing 3 different resume, each with its own specialization. The three resumes are as follows: the author's resume, which emphasizes management and analyst skills; a sample resume from Ohio University with a focus on computer graphics and game design; and a sample resume from Carnegie Mellon with a focus on UI/UX design.
+
+The experiment procedure include three stages in total, which is described by the pipeline below:
+
+![Experimental Design](images/experiment_design.png)
+
+Initially, the resume will be run through Lander to obtain top 5 job title with highest matching score along with skill keywords suggestion and job description for each of the job title. The resume used in this demonstration is resume number 3, UI/UX design focused resume. This resume can be found in resume folder in the home repository of this project, the link to the resume is:  
+
+The snippet of the matching report for one job position is as follow: 
+
+![Lander Output](images/lander_report.png)
+
+After obtaining the job description from the matching output above, Job Scan is utilized to calculate the initial matching score between the resume and the job description. The first step is to create new scan in Job Scan with provided resume and job description, then display score by click `Power Editing button`. The snippet of outcomes of two steps are as follow:
+
+![Initiate New Scan](images/run_jobscan.png)
+
+![Initial Scan Output](images/score_before.png)
+
+Subsequently, the suggested keyword will be added to the resume and the change in score is observed:
+
+![Scan output after editing](images/score_after.png)
+
+The overall matching score has increased by 26% between the scores obtained before and after the resume's inclusion of Lander's suggester keyphrase. This resume's matching procedure will be repeated with 4 further jobs and the whole process will be repeated with 2 additional resumes, bringing the total number of experiments to 15. 
+
+### Secondary experiment: Examining clusters
+
+Clustering procedure is the initial matching step in Lander, thus, it is also vital to make sure that jobs in a cluster are actually related to each other and belong to one field of job.  In order to explore the given question, this paper plot out the top 5 keywords in each cluster with job mapped to such cluster and evaluate if those keyword are genuinely connected to job titles or not. 'Seaborn' is in charge of plotting the frequency of the keywords in each cluster, along with a list of the positions held in each cluster.
 
 ## Evaluation
 
+### Primary experiment:
+
+After 15 trials, the initial score, after score and changing score in each trial is recorded by the following table:
+
+Table: Experiment Result Data
+
+ Trial  | Score before editing | Score after editing| Score change| Resume |
+|----------|-------------------|--------------------|--------------|--------|
+| 1  | 8%   | 39% | +31 |1|
+| 2| 14%   | 41% | +27          |1 |
+| 3 | 24%   | 46% | +22 |1 |
+| 4 | 12%   | 35%| +23|1 |
+| 5 | 31%   | 54% | +23 |1 |
+| 6| 24%   | 53% | +29 |2 |
+| 7| 18%   | 45% | +27       |2 |
+| 8| 25%   | 47% | +22|2 |
+| 9| 36%   | 53%| +17   |2 |
+| 10 | 13%   | 36% | +23|2 |
+| 11 | 35%   | 59% | +24 |3 |
+| 12 | 14%   | 40% |+26|3 |
+| 13| 26%   | 51% | +25 |3 |
+| 14| 19%   | 56% | +37 |3 |
+| 15| 21%   | 54%| +33 |3 |
+|Average| 21.3%    | 47.2%   | +25.9  |
+
+According to the table above, the average increase in matching score before and after using Lander is 25.9%. This increase in matching score vary based on the type of matched jobs. Resume 3 are only mapped into UI/UX or frontend design job and yield the average increase of 29%, while Resume 2 are mapped into developer jobs and only yield the average increase of 23.6%. This may infer that the skills set in UI/UX may be easier to navigate compare to a developer position.
+
+The graph representing the change in score is as follow: 
+
+![Experiment Graph](images/evaluation_graph.png)
+
+The red column represents score after using Lander and blue column represents score before using Lander, with yellow line represent the fluctuation in the change in score. The gragh asserts that the score after using Lander is always higher than the score before, which is the evidence that the usage of Lander actually increase the matching score. The yellow line is higher across resume 3 compare to resume 2 is evidence for different type of job may produce different changes in score.
+
+### Cluster Examination
+
+There are 26 clusters in total but only cluster 7 is chosen to be presented in this paper.
+
+![Cluster 7](images/cluster7.png)
+
+According to the plot of cluster 7, the keywords mapped in this cluster are business, analyst, data, system, which are directly related to the type of jobs in the cluster which are Business System Analyst, IT Business Analyst, etc,.. As the keywords and the type of jobs are directly related to each other, it is safe to conclude that the clustering procedure successfully group related jobs with each other along with relevant skill.
+
 ## Threats to Validity
+
+Despite the fact that Job Scan has been advertised as software that mimics ATS pipelines to perform score matching algorithms, no scholarly published research has been discussed about the similarities between Job Scan and other ATS software. Actual ATS software, such as Taleo, can perform skill searches based on recruiter input or the skills of previous successful candidates in that company. Job Scan does not have historical data like ATS software; instead, it obtains a list of skills from people who work for the position in general. Thus, using Job Scan to validate implies that the uniqueness of one enterprise may be overlooked.
+
+Furthermore, JobScan may increase matching score out of context, as evidenced by the trial, where matching score increased despite the suggested keywords being added at the end of the resume and not connecting to any sentence at all. This is likely to be the case in actual ATS software as well. However, if this is true, this resume will not make it through the round in which a human recruiter actually reads their resume.
 
 # Conclusion
 
