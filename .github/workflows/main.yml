@@ -17,6 +17,8 @@ jobs:
         uses: wtfjoke/setup-tectonic@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install imagemagick
+        run: sudo apt-get install imagemagick
       - name: Set up git repository
         uses: actions/checkout@v2
       - name: Resize images
