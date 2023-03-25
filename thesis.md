@@ -449,6 +449,7 @@ The experiment procedure include three stages in total, which is described by th
 Initially, the resume will be run through Lander to obtain top 5 job title with highest matching score along with skill keywords suggestion and job description for each of the job title. The output of each job match includes three component: matched skills, missing skills, and job description for the job. The snippet of the matching report for one job position is as follow: 
 
 ![Lander Output: Skills](images/lander_report.png)
+
 ![Lander Output: Job Description](images/lander_report_2.png)
 
 Take a look at the missing skills and matching skills section, communication belong to matched skills section while `strong communication skills`, `communication skills` are listed in the missing skills section. 
