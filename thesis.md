@@ -552,7 +552,7 @@ Based on the experiment, it is logical to conclude that using Lander will help u
 
 The web interface of Lander is also very user friendly, in which there are only 2 main options: Analyzer - the main section where resume scanning and job matching function deployed, and Database - sub section that allows user to learn more about the input data that Lander is based on. 
 
-![Cluster Display](images/lander_interface.png)
+![Lander Interface Display](images/lander_interface.png)
 
 On the Analyzer page, the tool required only two inputs from the user in order to perform matching procedures: a PDF version of their résumé and their seniority level. Whereas other competing tools, such as Job Scan and ResumeWorded, need candidates to give a job description in order to perform a score algorithm, this software does not. Lander aims to shed light on those who are unable to find a job title that is a perfect match for their skill set. While the number of skills necessary for technical-related occupations fluctuates daily, students frequently become overwhelmed by the variety of job titles. 
 
