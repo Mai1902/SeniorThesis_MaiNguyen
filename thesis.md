@@ -430,23 +430,32 @@ To reinterate, the optimal purpose of this tool is to help students or those who
 
 As ATS cannot be utilized for experimental purposes, utilizing alternative software that mimics the ATS scanning technique and generates some form of matching score for further quantitative evaluation is the other proper resort. Hence, Jobscan, which was extensively discussed in Chapter 2, will be used to evaluate Lander's accuracy. The reasons behind Job Scan is the ideal choice in this circumstance is this software has more than 1 million job seekers as clients, it is also an actual publicized ATS-counter tool, which has been acknowledged publically by job hunt coach as one of the useful apps to counter ATS algorithm.. According to Jobscan, clients generally see a 30% improvement in their own resume scanning round passing rate. Furthermore, Chapter 2 revealed that Job Scan is designed to outperform particular ATS programs because they are aware of a secret layer of real ATS products. So, in this scenario, Lander can be tested using Job Scan.
 
+Job Scan's main work flow is to take in the resume and job description, predict the job title from the job description, and return a list of skills highlighted in the job description and in jobs with similar job titles. It will then compare this list of skills to the resume and calculate the score based on the number of matched skills. The final JobScan score consists of resume formatting, skills matching, and searchability - which represents the ability of this resume to appear in recruiter searches. The component of searchability scoring is determined by whether personal information is mentioned clearly, whether work history includes the searched job title, and suitability with the job, which is calculated by matching keywords score.
+
 ## Experimental Design
 
 ### Primary experiment: Does Lander actually boost matching score?
 
-One of the most important metric to evaluate the efficiency of Lander is if the addition of suggested keyword actually improve matching score of a resume to a job or not.  In order to achieve so, the experiment will run through 15 distinct trials employing 3 different resume, each with its own specialization. The three resumes are as follows: the author's resume, which emphasizes management and analyst skills; a sample resume from Ohio University with a focus on computer graphics and game design; and a sample resume from Carnegie Mellon with a focus on UI/UX design.
+One of the most important metric to evaluate the efficiency of Lander is if the addition of suggested keyword actually improve matching score of a resume to a job or not.  In order to achieve so, the experiment will run through 15 distinct trials employing 3 different resume, each with its own specialization. The three resumes are as follows: the author's resume, which emphasizes management and analyst skills; a sample resume from Ohio University with a focus on computer graphics and game design; and a sample resume from Carnegie Mellon with a focus on UI/UX design. The primary resume showcased in this paper is the sample resume from Ohio University with a focus on computer graphics and game design.
+
+![Resume Sample](images/sample_resume2.png)
+
+The first glance at this resume, it is belong to a college student who has yet have any work experience in the industry. Hence, the seniority of job this person is looking for should be Junior. This student also has a lot of skills related to software development such as Java, JavaScript, C, C++, HTML, etc, .. so the job matched to this person is likely to be a general job that has a long list of requirement. 
 
 The experiment procedure include three stages in total, which is described by the pipeline below:
 
 ![Experimental Design](images/experiment_design.png)
 
-Initially, the resume will be run through Lander to obtain top 5 job title with highest matching score along with skill keywords suggestion and job description for each of the job title. The resume used in this demonstration is resume number 3, UI/UX design focused resume. This resume can be found in resume folder in the home repository of this project, the link to the resume is:  
+Initially, the resume will be run through Lander to obtain top 5 job title with highest matching score along with skill keywords suggestion and job description for each of the job title. The output of each job match includes three component: matched skills, missing skills, and job description for the job. The snippet of the matching report for one job position is as follow: 
 
-The snippet of the matching report for one job position is as follow: 
+![Lander Output: Skills](images/lander_report.png)
 
-![Lander Output](images/lander_report.png)
+![Lander Output: Job Description](images/lander_report_2.png)
 
-After obtaining the job description from the matching output above, Job Scan is utilized to calculate the initial matching score between the resume and the job description. The first step is to create new scan in Job Scan with provided resume and job description, then display score by click `Power Editing button`. The snippet of outcomes of two steps are as follow:
+Take a look at the missing skills and matching skills section, communication belong to matched skills section while `strong communication skills`, `communication skills` are listed in the missing skills section. 
+This demonstrates that candidates frequently overlook the phrases in job descriptions and believe that including a keyword that describe the main skill in the resume already help them to pass the ATS scanning if the machine is looking for that skill. In reality, ATS is very likely to look for exact matches only, and since job description emphasize that `strong communication skills` is needed, mentioning `communication` only may lead to their unfortunate rejection. Hence, Lander will assist candidates in determining which terms they should include in their resume. Specifically, the student in this example, as the phrase mentioning communication in their resume is *"Increased intercultural fluency by interacting daily with international students to work through communication challenge"*. This sentence demonstrates that the student has excellent communication skills, as evidenced by their ability to participate in difficult conversations involving multiple cultures.
+
+Job Scan is used to calculate the initial matching score between the resume and the job description after obtaining the job description from the matching output above. The first step is to create a new scan in Job Scan using the provided resume and job description, and then display the score by clicking the 'Power Editing' button. The following are the results of the mentioned steps:
 
 ![Initiate New Scan](images/run_jobscan.png)
 
@@ -456,11 +465,11 @@ Subsequently, the suggested keyword will be added to the resume and the change i
 
 ![Scan output after editing](images/score_after.png)
 
-The overall matching score has increased by 26% between the scores obtained before and after the resume's inclusion of Lander's suggester keyphrase. This resume's matching procedure will be repeated with 4 further jobs and the whole process will be repeated with 2 additional resumes, bringing the total number of experiments to 15. 
+The overall matching score has increased by 20% between the scores obtained before and after the resume's inclusion of Lander's suggester keyphrase. This resume's matching procedure will be repeated with 4 further jobs and the whole process will be repeated with 2 additional resumes, bringing the total number of experiments to 15. 
 
 ### Secondary experiment: Examining clusters
 
-Clustering procedure is the initial matching step in Lander, thus, it is also vital to make sure that jobs in a cluster are actually related to each other and belong to one field of job.  In order to explore the given question, this paper plot out the top 5 keywords in each cluster with job mapped to such cluster and evaluate if those keyword are genuinely connected to job titles or not. 'Seaborn' is in charge of plotting the frequency of the keywords in each cluster, along with a list of the positions held in each cluster.
+Clustering procedure is the initial matching step in Lander, thus, it is also vital to make sure that jobs in a cluster are actually related to each other and belong to one field of job.  In order to explore the given question, this paper plot out the top 5 keywords in each cluster with job mapped to such cluster and evaluate if those keyword are genuinely connected to job titles or not. 'Seaborn' is in charge of plotting the frequency of the keywords in each cluster, along with a list of the positions held in each cluster. This data will be displayed on Lander main website if user choose `Database` -> `Cluster Display` section.
 
 ## Evaluation
 
@@ -480,7 +489,7 @@ Table: Experiment Result Data
 | 6| 24%   | 53% | +29 |2 |
 | 7| 18%   | 45% | +27       |2 |
 | 8| 25%   | 47% | +22|2 |
-| 9| 36%   | 53%| +17   |2 |
+| 9| 26%   | 46%| +20   |2 |
 | 10 | 13%   | 36% | +23|2 |
 | 11 | 35%   | 59% | +24 |3 |
 | 12 | 14%   | 40% |+26|3 |
@@ -489,7 +498,9 @@ Table: Experiment Result Data
 | 15| 21%   | 54%| +33 |3 |
 |Average| 21.3%    | 47.2%   | +25.9  |
 
-According to the table above, the average increase in matching score before and after using Lander is 25.9%. This increase in matching score vary based on the type of matched jobs. Resume 3 are only mapped into UI/UX or frontend design job and yield the average increase of 29%, while Resume 2 are mapped into developer jobs and only yield the average increase of 23.6%. This may infer that the skills set in UI/UX may be easier to navigate compare to a developer position.
+According to the table above, the average increase in matching score before and after using Lander is 25.9%. This increase in matching score vary based on the type of matched jobs. Resume 3 are only mapped into UI/UX or frontend design job and yield the average increase of 29%, while Resume 2 are mapped into developer jobs and only yield the average increase of 23.6%. This may infer that the skills set in UI/UX may be easier to navigate compare to a developer position. The other reason can be even though the student in sample resume 2 possesses a lot of technical skills, this student has yet have any other experience to work in a technical related position yet. Thus, this student may lacking some soft skills and technical skills which can only be obtain from a job setting, which may make their score harder to be increased.
+
+As explained in chapter 2, the main principal of score computation in JobScan is through keywords matching, meaning the software put a big emphasis on keyword. Hence, the increment in matching score in JobScan after using Lander show that Lander can actually identify meaningful keywords that should be include in the resume. 
 
 The graph representing the change in score is as follow: 
 
@@ -499,17 +510,19 @@ The red column represents score after using Lander and blue column represents sc
 
 ### Cluster Examination
 
-There are 26 clusters in total but only cluster 7 is chosen to be presented in this paper.
+There are 26 clusters in total, this paper will only examine cluster 0 to model the accuracy of the clustering procedure.
 
-![Cluster 7](images/cluster7.png)
+![Cluster Display](images/cluster_model.png)
 
-According to the plot of cluster 7, the keywords mapped in this cluster are business, analyst, data, system, which are directly related to the type of jobs in the cluster which are Business System Analyst, IT Business Analyst, etc,.. As the keywords and the type of jobs are directly related to each other, it is safe to conclude that the clustering procedure successfully group related jobs with each other along with relevant skill.
+According to the plot of cluster 0, Frontend job titles are connected to the list of hightlighted keywords such as: javascript, web, angular, css. These keywords directly related to Frontend as they are all web and frontend dominant framework. As the keywords and the type of jobs are directly related to each other, it is safe to conclude that the clustering procedure successfully group related jobs with each other along with relevant skill.
 
 ## Threats to Validity
 
 Despite the fact that Job Scan has been advertised as software that mimics ATS pipelines to perform score matching algorithms, no scholarly published research has been discussed about the similarities between Job Scan and other ATS software. Actual ATS software, such as Taleo, can perform skill searches based on recruiter input or the skills of previous successful candidates in that company. Job Scan does not have historical data like ATS software; instead, it obtains a list of skills from people who work for the position in general. Thus, using Job Scan to validate implies that the uniqueness of one enterprise may be overlooked.
 
 Furthermore, JobScan may increase matching score out of context, as evidenced by the trial, where matching score increased despite the suggested keywords being added at the end of the resume and not connecting to any sentence at all. This is likely to be the case in actual ATS software as well. However, if this is true, this resume will not make it through the round in which a human recruiter actually reads their resume.
+
+The other threats to validity is Job Scan based their score on the frequency of keywords that appearing in the resume. This means that if a candidate wants to raise their score on Job Scan as high as possible, they must include the skill in their resume for the same amount of time that it is listed in the job description. However, since the actual procedures behind ATS software are unknown, it is difficult to determine whether the scoring system of ATS is also dependent on the frequency of keyword appearance or not. This unknown feature of ATS threatens to undermine the validity of the Lander experiment result based on Job Scan.
 
 # Conclusion
 
@@ -537,13 +550,22 @@ Due to the large amount of text that this project has to processed, time expensi
 
 Based on the experiment, it is logical to conclude that using Lander will help user to increase the matching score in various job titles by some amount. Lander provides this service for free whilst it will cost 50$ per month for Job Scan to help scanning resume and suggest missing keyword. Nonetheless, the actual impact of Lander can only be examine if a group of students actually use it and apply for job using the edited resume. Besides increase matching percentage, the job titles matching in resume was also deemed to be reasonable, but also remain unjustified by an actual experiment. However, Lander successfully produce the outcome introduced in the first chapter, in which it help students to navigate the job position fit and giving suggestion for them to elevate their resume. 
 
+The web interface of Lander is also very user friendly, in which there are only 2 main options: Analyzer - the main section where resume scanning and job matching function deployed, and Database - sub section that allows user to learn more about the input data that Lander is based on. 
+
+![Lander Interface Display](images/lander_interface.png)
+
+On the Analyzer page, the tool required only two inputs from the user in order to perform matching procedures: a PDF version of their résumé and their seniority level. Whereas other competing tools, such as Job Scan and ResumeWorded, need candidates to give a job description in order to perform a score algorithm, this software does not. Lander aims to shed light on those who are unable to find a job title that is a perfect match for their skill set. While the number of skills necessary for technical-related occupations fluctuates daily, students frequently become overwhelmed by the variety of job titles. 
+
+
+The Database page allows users to get the extensive lsit of extracted skills used by Lander. The design of this feature represents the hope that other developers would utilize this database to advance the job search capabilities for other individuals, or simply to assist tech industry workers in navigating critical skill sets. The second function of this website is 'Cluster Display,' in which the user can display the dominating keywords in 26 clusters, representing 26 distinct fields of technical vocations, and the job titles that correspond to each cluster. In addition to assisting users in understanding how jobs are grouped in Lander, this function may assist users in gaining a broader understanding of the numerous fields in Computer Science and the expertise that are highlighted and in demand in each field. This investigation might help job seekers determine their next move if they wish to switch fields or analyze the likelihood of obtaining employment in each field.
+
 ## Future Work
 
 ### Continuously update the dataset
 
-The last time this dataset was updated on Kaggle was last year, which means this job dataset can only give suggestion purpose, not actually introduce student to an opened position in the mean time. Given the scope of this dataset is technology job, which is prone to change abruptly at any time due to the fast-paced nature of this industry. Thus, the skills set of certain job in this dataset may be considered obsolete to the required skills in the same job title today. Hence, it is important to continuously update this dataset by the actual open job post recently by scraping live data from dice.com or other job portal website such as Indeed, ZipRecruiter, etc. 
+The last time this dataset was updated on Kaggle was a year ago, which implies that it can only be used for suggestion purposes and cannot genuinely introduce students to newly-opened positions. T Given the scale of this information, technology jobs are subject to abrupt change at any time due to the industry's rapid pace. Consequently, the skill set of specific jobs in this dataset may be deemed obsolete in comparison to the current skill requirements for the same job title. Thus, it is essential to regularly update this information with the most recent open job postings by collecting live data from dice.com or other job portal websites such as Indeed, ZipRecruiter, and others. 
 
-After the dataset is updated, the keyword extraction procedure should be perform again, and job post expired after every 6 months should be archive and removed from the dataset to preserve the relevance of skills set. By this way, the job suggestion and skill suggestion model will yield a better result.
+After updating the dataset, the keyword extraction technique should be repeated, and job postings older than six months should be archived and eliminated to retain the relevancy of the skills set. . By this way, the job suggestion and skill suggestion model will yield a better result.
 
 ### Expand search outside of technical related job
 
@@ -562,6 +584,12 @@ Nevertheless, an optimal approach for job position match procedure for other job
 ### Build the tool on other web interface
 
 As streamlit is quite slow when processing keyphrase matching procedure, the expand of dataset later on or any attemp to add more feature to Lander may slow this tool down even more, which will excarcebate user experience. Thus, it is important to migrate Lander to other web interface framework such as Dash, which is quite similar to Streamlit but not entirely open-source, or Flask, which is open-source but much more complicated to build compare to Streamlit.
+
+### Examine the tool by interview rate
+
+Despite the fact that Lander is now verified by the increase in Job Scan matching score, Lander's objective is to debunk the ATS algorithm and assist students to advance to the interview round after submitting job applications. Consequently, the only way to demonstrate Lander's efficacy is to design a test case involved actual candidates applying to actual jobs.
+
+The principle of the experiment is to have a group of job seeker using Lander and apply to job. This group should consist of more than 100 individuals with random expertise in technology in order to arrive as an acceptable standard deviation for the test. The experiment will be conducted by matching a group of 100 candidates, divided into fifty groups of two individuals each, with a similar job where the difference in score is less than 10 points. Then, these two individuals will apply to the matching position, one with the Lander suggestion (test group) and the other without (control group). Then, note the rate of test group and control group first scanning round pass rates. Lander would be deemed effective if, on average, the passing rate of the test group is greater than that of the control group by more than 5 percentage points.
 
 ## Future Ethical Implications and Recommendations
 
@@ -585,6 +613,17 @@ As an application that prompting resume and other private information from user,
 
 ## Conclusions
 
+Comptia+ published a report in February 2023 highlighting the drastic reduction in newly opened positions in the tech sector, which has dropped to as low as the number of job vacancies during the peak on Covid-19 - September 2020. 
+
+![New job status [@comptia]](images/job_open_state.png) 
+
+The reason for this decrease is that the tech industry is oversaturated with talent hired between 2021 and 2022. During that time, the pandemic transformed the most of of regular routine into remote-based activity, which stimulated the rapid expansion of tech-based companies and start-ups. This circumstance draws a lot of money and success to the tech industry, so enterprises need to have a lot of new tech workers. Even large corporations presume that this astounding situation will last eternally since many projections about the shifts in consumer habits have been extensively examined, and most study leads to the conclusion that people will continue to rely on technology firms products for the **new normal**. Nevertheless, in 2023, when the pandemic can be deemed over and all pandemic preventative measures policies have been lifted, people return to normal life and seemed to not miss technology all that much, as evidenced by the fall of Zoom - the pandemic's superstar. According to Reuters, Zoom shares have slumped by 90% since the peak of the pandemic [@aditya_soni_2022]. 
+
+![Zoom state [@aditya_soni_2022]](images/zoom_state.png) 
+
+The demise of Zoom and other tech companies explains why enterprises have recently laid off workers, including tenured employees, and freeze-hire at the same time. Graduating students who received job offers last year had their offers rescinded as a consequence of a shortage of revenue in businesses of all sizes. According to the New York Times, the number of college students with degrees in computer science has tripled between 2011 and 2021, while being projected to grow even further in the next five years [@singer_huang_2022]. The upsurge in the amount of tech students, as opposed to the dramatic decrease in newly opened tech positions, forecasts how competitive the tech job market will be in the years ahead. For instance, Roblox, a rising firm in the gaming industry, anticipates receiving over 50 000 applications to fill 300 intern positions this summer [@singer_huang_2022]. This astonishing amount is equivalent to 0.6% acceptance rate, which is 10 times harder to get in Harvard, and whoever make it in can be considered successes in shooting for the moon.  
+
+Lander was motivated by the hardships that students in Allegheny College's department of computer science, students in the tech industry, and the author herself have faced. In the age of keyword-driven recruiting, determining what type of job to apply for and what keywords to include in the resume is a decisive factor as to whether the candidate can pass the ATS initial screening. As a result, the optimal aim of Lander is to alleviate some of the pressure that fellow students and job seekers face when seeking employment in this new age of recruitment. With Lander, hope that this tool can somewhat help job seekers actually shoot for the moon!
 
 # References
 
