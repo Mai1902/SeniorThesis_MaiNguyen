@@ -377,7 +377,7 @@ def similarity_caculator(text_resume, text_jd):
     return matchPercentage
 ```
 
-The first stage in the pipeline for matching resumes to top job titles is the computation of the cosine similarity score. The top 100 job titles with the highest score are retrieved and are saved in a new dataframe named `match df` after the cosine similarity score between the resume and job description is calculated for each job title. The Phrase Matching tool then uses this dataframe to determine the top 5 job titles. 'Streamlit setup.py' contains the code for returning actual ranking of cosine similarity scores. 
+The first stage in the pipeline for matching resumes to top job titles is the computation of the cosine similarity score. The top 100 job titles with the highest score are retrieved and are saved in a new dataframe named `match df` after the cosine similarity score between the resume and job description is calculated for each job title. The Phrase Matching tool then uses this dataframe to determine the top 5 job titles. `Streamlit setup.py` contains the code for returning actual ranking of cosine similarity scores. 
 
 #### Scoring bases on Phrase Matching
 
