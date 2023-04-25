@@ -381,7 +381,7 @@ The first stage in the pipeline for matching resumes to top job titles is the co
 
 #### Scoring bases on Phrase Matching
 
-Matcher is a rule-matching engine in spaCy that works with tokens in the same way as regular expressions and Phrase Matching is a rule-based phrase matcher.  The rules can reference token annotations. This tool helps match extensive terminology collections, which is the key phrase of the resume and job description. The source code for matching is provided below:
+Matcher is a rule-matching engine in `spaCy` that works with tokens in the same way as regular expressions and Phrase Matching is a rule-based phrase matcher.  The rules can reference token annotations. This tool helps match extensive terminology collections, which is the key phrase of the resume and job description. The source code for matching is provided below:
 
 ```python
 def keyword_matching(text_resume, skill):
