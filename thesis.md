@@ -2,12 +2,17 @@
 
 ## Motivation
 
-For the last two years, the world has faced two unprecedented events that directly contributed to the dramatic shrinkage of the job market, which are the pandemic - Covid 19, and the war between Russian and Ukraine. During the Covid 19 era, technical related occupations were envisioned to be the invincible profession as the pandemic forced humans to shift the practice of normal activity to online activity. The blooming of e-commerce, cryptocurrency, and e-learning, backed by the swift transformation from small startups to unicorn giants such as Zoom or Coinbase and the surge in market value of FAANG (abbreviation for Facebook, Appe, Amazon, Netflix and Google - the biggest fives technology corporation based on revenue and market share ), encouraged businesses to expand their technology sectors, subsequently allow numerous talents to join the field effortlessly [@harvard_business_review_2022]. As the inflation index is increasing day by day, the amount of tech jobs that are cut is mounting at a much faster rate. One of the prominent consulting firms in the field of outplacement services, Challenger, Gray & Christmas, Inc, conducted a thorough analysis on the striking and unforeseen reduction of job in the tech industry, which is illustrated by the graph below:
+For the last two years, the world has faced an unprecedented event that directly contributed to the dramatic shifting in the tech job market, which is the pandemic - Covid 19. During the Covid 19 era, technical related occupations were envisioned to be the invincible profession as the pandemic forced humans to shift the practice of normal activity to online activity. The blooming of e-commerce, cryptocurrency, and e-learning, backed by the swift transformation from small startups to unicorn giants such as Zoom or Coinbase and the surge in market value of FAANG (abbreviation for Facebook, Appe, Amazon, Netflix and Google - the biggest fives technology corporation based on revenue and market share ), encouraged businesses to expand their technology sectors, subsequently allow numerous talents to join the field effortlessly [@harvard_business_review_2022]. However, this beautiful scenario doesn't last long, as the news about tech company of all size cutting their headcounts is on headlines every day. As the inflation index is increasing day by day, the amount of tech jobs that are cut is mounting at a much faster rate. One of the prominent consulting firms in the field of outplacement services, Challenger, Gray & Christmas, Inc, conducted a thorough analysis on the striking and unforeseen reduction of tech worker, which is illustrated by the graph below:
 
 
 ![Tech Job cut](images/techjobcut.png)
 
-Based on the graph, the tech industry in 2021 had a robust laying off rate as the rate stayed close to zero throughout the year; however, by July of 2022, the amount of tech employees were cut off from the industry incline exponentially. This scenario signifies that the tech industry is on the verge of a comprehensive recruitment freeze[@june_2022], which directly affects the employment prospects of new graduates majoring in Computer Science and other tech related majors this year. Mark Zuckerberg , Meta CEO (formally known as Facebook) wrote, in a message to employees prior to the laying off 13% of its workforce, “At the start of Covid, the world rapidly moved online and the surge of e-commerce led to outsized revenue growth. Many people predicted this would be a permanent acceleration that would continue even after the pandemic…Unfortunately, this did not play out the way I expected.” The controversial employment cut from Meta was the result of an unexpected, yet massive, loss of this company valuation. In 2021, Meta’s valuation peaked at 1 trillion dollars, while in October of 2022, the home of Facebook, WhatsApp, and Instagram value shrinked to merely 300 billion dollars[@picchi_2022]. Apart from Meta, several other giant tech companies also announced their employment cut in the last 4 months, including Amazon, Microsoft, and Stripe. As these top tier companies are struggling to reduce their cost by laying off employees, they have freezed their hiring process until further notice[@wamsley_2022]. Hence, the top tier students who were supposed to have another application pool, as they would only apply to the powerhouses and compete with those at the same level, now have no choice but to migrate to the standard application pool. This implies that it will be much harder for students who have less skills, less experience, graduating from a smaller school, and possessing other disadvantages, to successfully land a job. 
+
+Based on the graph, the tech industry in 2021 experienced a low rate of layoffs, as the rate remained close to "0" throughout the year; however, by July of 2022, the amount of tech employees were cut off from the industry incline exponentially. This scenario signifies that the tech industry is on the verge of a comprehensive recruitment freeze[@june_2022], which directly affects the employment prospects of new graduates majoring in Computer Science and other tech related majors this year. Mark Zuckerberg , Meta CEO (formally known as Facebook) wrote, in a message to employees prior to the laying off 13% of its workforce, “At the start of Covid, the world rapidly moved online and the surge of e-commerce led to outsized revenue growth. Many people predicted this would be a permanent acceleration that would continue even after the pandemic…Unfortunately, this did not play out the way I expected.[@harvard_business_review_2022]” The controversial employment cut from Meta was the result of an unexpected, yet massive, loss of this company valuation. In 2021, Meta's valuation crested at $1 trillion, while in October 2022, the value of the parent company of Facebook, WhatsApp, and Instagram dropped to $300 billion [@picchi_2022]. In the past year months, in addition to Meta, Amazon, Microsoft, and Stripe have also announced layoffs at their respective companies. As these top-tier companies struggle to reduce costs by layoffs, they also have put a hold on new hires until further notice [@wamsley_2022]. The graph below from Market Watch depicting the rapid decline in the number of new tech jobs posted is evidence of the hiring moratorium.
+
+![Decrease in new job posted[@han_2022]](images/hiring_freeze.png)
+
+According to the image, the stagnation in recruiting began at the start of 2022 and decreased each month until it reached a record low in October when the article was published. This decrease is the exact opposite of the layoff rate depicted in Figure 1, which increases progressively from January to October. While the rate of layoffs is increasing daily, the number of newly posted jobs in the technology industry is decreasing, as shown in Figures 1 and 2. This means that it is difficult for recent graduates to enter the job market, as a group of experienced workers who were recently laid off are also entering the market to compete for the same positions. In addition to the rivalry between skilled tech workers and recent college graduates, the competition among tech students is at an all-time high. Indeed, the elite students who were supposed to have a separate application pool because they would only apply to the powerhouses and contend with those of the same caliber are now forced to migrate to the standard pool. This implies that it will be much more difficult for students with fewer skills, less experience, who graduated from a smaller institution, and who have other disadvantages to secure employment. 
 
 Beside the sudden vulnerability of employment in the tech industry, this industry has always been known as one of the most competitive sectors due to its tremendous opportunities for growth and high salary. Since the recruiting procedures and its outcomes should remain confidential, the exploration of a published data set which can describe the competitiveness of the tech job market was nearly impossible. Thus, this paper will discuss an anonymous, yet accredited, job application journey across 18 months of a person with 3 years of experience in the tech industry.
 
@@ -17,7 +22,7 @@ The above graph asserts that this candidate applied to a total of 73 jobs and on
 
 ## Introduction of Applicant Tracking System and its disadvantages to applicant
 
-In the era of automation, the traditional hiring process slowly became deprecated, especially in a massive field such as technology. CompTia, a recognized cybersecurity platform, asserted in their State of the Tech Workforce that there were nearly 4 millions new tech jobs posted by employers across multiple job boards. In order to deliver a hiring decision efficiently, the Human Resources department tilted toward integrating Information Technology and Database Management into the hiring process[@mukherjee2014role]. Electronic Human Resources Management (e-HRM in short) is the first system that successfully incorporates cutting-edge technology into leveraging the performance of the human resources department. Applicant Tracking System is the later born of e-HRM, and it is solely in charge of the talent acquisition sector. An ATS is a computer software program that manages the hiring process. It does this by collecting and sorting thousands of resumes. Hiring managers can then screen candidates using the ATS, as well as track their progress through the hiring process. By automating the hiring process in this way, ATS system is believed to deliver accurate, cost effective and efficient hiring decisions.
+In the era of automation, the traditional hiring process slowly became deprecated, especially in a massive field such as technology. CompTIA, a prominent cybersecurity platform, claimed in their State of the Tech Workforce report that employers had posted nearly 4 million new tech positions on multiple job boards [@comptia_1]. While this number is lesser than the volume of job postings in the previous year, it is still significantly greater than the number of jobs in other fields. Hence, in order to deliver a hiring decision in efficiently, the Human Resources department tilted toward integrating Information Technology and Database Management into the hiring process[@mukherjee2014role]. Electronic Human Resources Management (e-HRM in short) is the first system that successfully incorporates cutting-edge technology into leveraging the performance of the human resources department. Applicant Tracking System is the later born of e-HRM, and it is solely in charge of the talent acquisition sector. An ATS is a computer software program that manages the hiring process. It does this by collecting and sorting thousands of resumes. Hiring managers can then screen candidates using the ATS, as well as track their progress through the hiring process. By automating the hiring process in this way, ATS system is believed to deliver accurate, cost effective and efficient hiring decisions.
 
 ![Recruiting Stages](images/hiringgraphic.jpeg)
 
@@ -55,7 +60,7 @@ In step 1, the type of job requisition that provides comprehensive information a
 
 ## Current State of the Art
 
-Applicant Tracking System started to intergrate in the recruiting practice from the 90s, replacing the piles of document on the table of recruiters and providing them a platform to keep track of applications and their status[@predictive_talent_acquisition_software]. The very first version of ATS acted solely as a database management system with a better queries for application tracking. In the 2000s, with the blooming of the internet, traditional recruiting strategies shifted to online-based, marking the birth of online application and job boards. Accordingly, the massive amount of online applicant urged the ATS to have two more applications: match candidate to the suitable job post and rank the candidates base on level of compatibility with the job. Josh Bersin asserted in his “HR Technology Disruptions for 2018” report that “hiring people is by far the most important thing companies do”, which emphasize the significant of having an effective and accurate recruiting procedure for the growing applicant pool. Hence, ATS is continuously growing in the field and slowly become an irreplaceble part of recruitment. 
+Applicant Tracking System started to intergrate in the recruiting practice from the 1990s, replacing the piles of document on the table of recruiters and providing them a platform to keep track of applications and their status[@predictive_talent_acquisition_software]. The very first version of ATS acted solely as a database management system with a better queries for application tracking. In the 2000s, with the blooming of the internet, traditional recruiting strategies shifted to online-based, marking the birth of online application and job boards. Accordingly, the massive amount of online applicant urged the ATS to have two more applications: match candidate to the suitable job post and rank the candidates base on level of compatibility with the job. Josh Bersin asserted in his “HR Technology Disruptions for 2018” report that “hiring people is by far the most important thing companies do”, which emphasize the significant of having an effective and accurate recruiting procedure for the growing applicant pool. Hence, ATS is continuously growing in the field and slowly become an irreplaceble part of recruitment. 
 
 ![Current Value of Applicant Tracking System [@kbv_research_2022]](images/stateoftheart.png)
 
@@ -69,44 +74,49 @@ According to both of the ranking, Taleo is ranked as one of the most prominent A
 
 ### Taleo (Oracle)
 
-Owned by Oracle, Taleo Cloud Service is a talent management solution designed for businesses of any size to help HR recruiters and management attract and retain key staff. The platform provides the tools necessary to track applicants and keep tabs on recruiting data that is accessible anytime and from anywhere. The Taleo system relies on social media platforms and integrates with Facebook and Twitter. It also integrates with productivity tools including Microsoft Outlook and Google. Taleo works as a useful and effective way to onboard new recruits and features a custom new hiring portal that stores new employee data. It also provides users with a recruiter/hiring manager dashboard to help identify any onboarding issues that may arise.
+Oracle's Taleo Cloud Service is a talent management solution designed to assist HR recruiters and management in attracting and maintaining key personnel in organizations of any size. The software offers the tools required to follow up on applicants and monitor recruiting data, which are accessible at any time. Facebook and Twitter are incorporated into the Taleo system. It also links with productivity tools such as Google and Microsoft Outlook. Taleo is a useful and effective method for onboarding new hires and includes a custom recruiting portal that stores new employee information. It also provides users with a dashboard for recruiters and recruiting managers to help identify any potential onboarding issues.
 
-Several key features of Taleo include cost savings (in which data on Taleo is managed by cloud-based service) and social media and productivity integration (as Taleo is interconnected with significant social media platforms). These key features along with Taleo comprehensive ATS service such as applicant trascking, dashboards, and integration APIs helps recruiter to acquire efficient hiring decisions. Some companies use Taleo are: Starbucks, Nike, Nintendo, Tesla, United Airlines, etc..
+Key Taleo features include cost reductions (as Taleo data is managed by a cloud service) and social media and productivity integration (as Taleo is connected to major social media platforms). Together with Taleo's comprehensive ATS service, these key features such as applicant tracking, dashboards, and integration APIs enable recruiters to make effective recruiting decisions. Some companies use Taleo are: Starbucks, Nike, Nintendo, Tesla, United Airlines, etc..
 
-Taleo streamlines the talent acquisition procedure by ranking and filtiring applicants using 4 methods:
+Taleo streamlines the talent acquisition procedure by ranking and filtiring applicants using 4 methods [@hu_2022]:
 
 - Method 1 - Tiered Scoring for Knockout Questions: Knockout questions are pass/fail questions that are commonly used in the application by recruiter to filter out candidate who doesn't meet some baseline requirement, such as "Do you need sponsorship now or in the future?", "Are you lawfully allowed to work in US without limitations?". Taleo allows recruiter to put in tier grading for every knockout questions and filter out candidates according to the requirement of the recruiter. 
 
-- Method 2 - Bonus Points for Certain Resume Keywords: A recruiter can set up Taleo to assign some amount of bonus point to an applicant that mentions one of the skills in the required skills or recommended skills section of the job description, or some other keyword that help recruiter to identify potential candidates. This bonus scoring system helps Taleo to rank candidates who passed knocked-out questions round.
+- Method 2 - Bonus Points for Certain Resume Keywords: Recruiters can use Taleo to give applicants who include certain keywords in their resumes (such as those listed in the required skills or recommended skills sections of the job description) a higher score when shortlisting candidates. Taleo uses this supplementary scoring to rank the applicants who made it through the knock-out questions.
 
-- Method 3 - Automatic Resume Scoring: Even if a recruiter opts not to manually assign extra points to certain keywords, Taleo automatically scores applications and resumes based on their contents in what they call “Req Rank.” Taleo parses the text from candidate resume and application then compares it to the job description. Then, Recruiters can filter out applicants that don’t score above a certain threshold.
+- Method 3 - Automatic Resume Scoring: Even if a recruiter chooses not to manually assign additional points to specific keywords, Taleo evaluates applications and resumes based on their content using a metric known as "Req Rank." Taleo analyzes the text of a candidate's application and resume and compares it to the posting's requirements. Recruiters will eliminate candidates who do not satisfy a minimum scoring threshold.
 
-- Method 4 - Boolean search: Recruiters can search their applicant pool within Taleo for specific skills and keywords, or even craft complex Boolean searches with  “and,” “or,” and “not” operators (among other modifiers) to fine tune their results. These keywords are normally the key skills that recruiter require the candidate to have in their resume. 
-
+- Method 4 - Boolean search: Recruiters can use Taleo to conduct skill and keyword searches, as well as more complex Boolean searches employing the "and," "or," and "not" operators (among other modifiers) to narrow their results. When evaluating resumes, recruiters frequently seek candidates with the aforementioned competencies. 
 
 ## Goals of the Project
 
 With the hiring freeze and the increase in demand for experienced workers in technology industry, the new graduate classes are facing the challenging of not being able to secure a job right after graduation. Moreover, the amount of graduate student who are struggle to find their suitable job title in the overwhelmingly massive job market has increased exponentially. Thus, the whole purpose of Lander is to become an automated resume coach which provide an open source, free, and user friendly tool for any candidate who are currently in the limbo of job searching by matching the candidate to the suitable job by calculating the similarity between the candidate resume and the job description, and helping candidate to identify certain keywords that they should include in their resume to pass the ATS resume scanning round. After the keywords identification process, user can incoporate those keyword into their resume in order to elevate their resume. Lander is certainly not trying to inspire candidate to manipulate the hiring process, it is only a method for candidate to determine and apply to their suitable job efficiently and successfully. 
 
-![Example of Resume Elevation](images/example.png)
-
 As recruiter utilize ATS to increase the performance of their job, the candidate also have the right to apply Lander in their job application journey to increase the chance of getting into desired position. Moreover, the ATS system, if falls into wrong hand, may turn to a systematic bias in the process of making hiring decision as recruiter can modify the scoring or ranking system to make sure that candidate fit their narrative instead of matching the job requirement, so Lander can be a way for candidates to offset these hidden scheme for hiring if any. 
 
-## Ethical Implications
+## Ethical Implications (TODO)
 
-- Data collection issue: The database used for Lander is adopted from Kaggle, and this dataset is scraped from Dice.com, a job board website. Even though dice allows scraping and Kaggle provides open source dataset, this tool will use this database to support job seeker and may direct the user directly to the original job post, not to dice.com, which may reduce the revenue of this job board website. 
+1. Data collection issue
 
-- Potential social issue: This tool helps job seeker to identify suitable jobs and leverage their resume using algorithms, posing a big question - Will ATS/recruiter discriminate against using this tool?
+The database used for Lander is adopted from Kaggle, and this dataset is scraped from Dice.com, a job board website. Even though dice allows scraping and Kaggle provides open source dataset, this tool will use this database to support job seeker and may direct the user directly to the original job post, not to dice.com, which may reduce the revenue of this job board website. 
 
-- Potential misuse - unintended consequence: Does this tool tell people to lie, as candidate may include the keyword that are not applied to them.
+2. Potential social issue
 
-- Information privacy: As an application that prompting resume and other private information from user, it is prone to have confidentiality problem. So, there is a need to make sure that the information in the resume is secured.
+This tool helps job seeker to identify suitable jobs and leverage their resume using algorithms, posing a big question - Will ATS/recruiter discriminate against using this tool?
+
+3. Potential misuse - unintended consequence 
+
+Does this tool tell people to lie, as candidate may include the keyword that are not applied to them.
+
+4. Information privacy
+
+As an application that prompting resume and other private information from user, it is prone to have confidentiality problem. So, there is a need to make sure that the information in the resume is secured.
 
 # Related work
 
 ## The big picture of Applicant Tracking System and its advantages
 
-Emerged in the talent acquisition industry from the 1990s, Applicant Tracking System has become an indispensable tool in the field of recruitment.  Human resources departments “have been the organizational business units most averse towards information technology (IT) for decades” (Laumer et al.) [@laumer2015] as the automation in a sector that requires human intervention is complicated to regulate. In a survey conducted by Gupta et al in late 2018 across recruiters about their opinion on the impact of technology on talent acquisition sector, the demonstration of the final result is as follow:  
+Emerging into the talent acquisition industry from the 1990s, Applicant Tracking System has become an indispensable tool in the field of recruitment.  Human resources departments “have been the organizational business units most averse towards information technology (IT) for decades” (Laumer et al.) [@laumer2015] as the automation in a sector that requires human intervention is complicated to regulate. In a survey conducted by Gupta et al in late 2018 across recruiters about their opinion on the impact of technology on talent acquisition sector, the demonstration of the final result is as follow:  
 
 Table: The survey on the impact of ATS on the performance of recruitment [@gupta]
 
@@ -129,7 +139,7 @@ The description of Applicant Tracking System within the above Introduction secti
 
 ![A typical ATS and its component [@koteswariuse]](images/ats_every_step.png)
 
-In addition to the typical component that most ATS is having above, several ATS software has broaden the horizon of the involvement of it in the recruitment, for example: "Hirevue introduced AI-enabled technologies that will analyzing appearance and languages, how the applicant is answering for every question to identification of style of speaking (Izario et al., 2017), this mechanism will help to select right talent into the enterprise." (Nawaz, Nishad) [@nishad]. Such an advancement magnify the incorporation of ATS within the candidate screening procedure in which ATS can evaluate the candidate using the interview video as well, and it soon become significant. During the 2020-2021 recruitment cycle, due to the burden of the social distancing guidelines, several company had transformed their first interview round, with the intention to acquire more information from the candidate, to video recording in which candidate can record their responds for acquired questions and submit it to their application. Thus, on the stance of recruiters and human resources officers, the impact of ATS on their duties at this moment is far exceed the recurring limitations that it is holding.
+In addition to the typical component that most ATS is having above, several ATS software has broaden the horizon of the involvement of it in the recruitment, for example: "Hirevue introduced AI-enabled technologies that will analyzing appearance and languages, how the applicant is answering for every question to identification of style of speaking, this mechanism will help to select right talent into the enterprise." [@nishad]. Such an advancement magnify the incorporation of ATS within the candidate screening procedure in which ATS can evaluate the candidate using the interview video as well, and it soon become significant. During the 2020-2021 recruitment cycle, due to the burden of the social distancing guidelines, several company had transformed their first interview round, with the intention to acquire more information from the candidate, to video recording in which candidate can record their responds for acquired questions and submit it to their application. Thus, on the stance of recruiters and human resources officers, the impact of ATS on their duties at this moment is far exceed the recurring limitations that it is holding.
 
 ## The problems of Applicant Tracking System
 
@@ -137,13 +147,13 @@ Even though the benefit of ATS is indisputable on the recruiter end, its limitat
 
 ### Methodology of candidate screening in ATS
 
-ATS often time utilizes supervised learning as the hidden layer of candidate selection and candidate ranking.Supervised learning occurs when algorithms are loaded with instructional data and correct answers. The task of machine learning is to memorize the training databases and apply the gained knowledge, all based on real data. Supervised machine learning algorithms are described as learning functions Y=f(X), where the tool based on AI makes predictions about the future (Y) and new variable input data (X) [Le, 2021]. In ATS, the training database can be the profile of successful candidate while the correct answer in this context is the compatible job title with such profile. The continuous feeding of candidate data to the tool will help it finalize the list of key skills for each job position. Then, these key words incorporate into the formation of job description or the candidate selection for a job position. 
+ATS often time utilizes supervised learning as the hidden layer of candidate selection and candidate ranking.Supervised learning occurs when algorithms are loaded with instructional data and correct answers. The task of machine learning is to memorize the training databases and apply the gained knowledge, all based on real data. Supervised machine learning algorithms are described as learning functions $Y=f(X)$, where the tool based on AI makes predictions about the future (Y) and new variable input data (X) [Le, 2021]. In ATS, the training database can be the profile of successful candidate while the correct answer in this context is the compatible job title with such profile. The continuous feeding of candidate data to the tool will help it finalize the list of key skills for each job position. Then, these key words incorporate into the formation of job description or the candidate selection for a job position. 
 
 ### Harmful feedback loop of Supervised Learning
 
 One of the most controverial issue of supervised learning is if the training data solely come from the past record, the predictions computed from such dataset may follow the pattern of the training data, which subsequently increase the level of bias in deliveration of predictions. The reason is supervised learning follows strictly the given record and unable to realize the possible mistake from the past database. Such a scenerio is labeled a harmful feedback loop, which "prevents the system from improving over time by removing the presence of unbiased data." [@soni_2022]
 
-As the algorithms in ATS are mostly supervised learning, it is inevitable to retain harmful feedback loop. The notorious example of a harmful feedback loop in delivering hiring decision using automated recruitment assistance is Amazon in 2014. The giant in technology had developed a tool with a desire to identify the candidate in a large pool of candidate efficiently, which possessed the same concept with a typical ATS. Despite the promised prospect, the tool turned out to discriminate againts women candidates as the trained database was dominent by male candidate. In the database, which include the profile of successful candidates in Amazon for the last 10 years, the amount of male applicant were overwhemingly more than the female candidates, which give the tool a perception that male candidate is preferred, while resumes containing the word "women" are reserved for other type of occupations[@hamilton_2018]. 
+By definition, feedback loop is a prevalent practice in machine learning that uses the output of the process as the input of the same process to improve the performance of prediction over time. Once the profile of a successful candidate is added to the tool's historical hiring data, an Applicant Tracking System feedback loop is created. This data will be fed into the system so that the applicant tracking system (ATS) can identify suitable candidates based on the skillsets and other information of previously successful candidates. Despite the fact that feedback loops frequently improve the algorithm's performance and precision, if the historical data is biased, it may exacerbate the ongoing bias in the tech industry's recruiting process. Since the algorithms in ATS are mostly supervised learning, it is inevitable to retain harmful feedback loop. The notorious example of a harmful feedback loop in delivering hiring decision using automated recruitment assistance is Amazon in 2014. The giant in technology had developed a tool with a desire to identify the candidate in a large pool of candidate efficiently, which possessed the same concept with a typical ATS. Despite the promised prospect, the tool turned out to discriminate againts women candidates as the trained database was dominent by male candidate. In the database, which include the profile of successful candidates in Amazon for the last 10 years, the amount of male applicant were overwhemingly more than the female candidates, which give the tool a perception that male candidate is preferred, while resumes containing the word "women" are reserved for other type of occupations[@hamilton_2018]. 
 
 ### Inflexibility in ATS screening
 
@@ -159,7 +169,9 @@ The research for an application that focus on improving candidate experience wit
 
 ### Resume Scan
 
-Resume Scan is a two-ways tool with the purpose of enhancing the performance and experience of both recruiter and candidate by proposing a system that can handle Application Tracking and Career Prediction Model at the same time [@sippy_2021]. This tool is a research-based project, which is conducted by a group of undergraduate research student and their professor at the Thadomal Shahani Engineering College in India. The motivation for their research is that 60% of engineering students remain uncertain about their career prospect by the time of graduation, and they also want to provide an inexpensive recruitment tool for recruiters.
+Resume Scan is a two-way tool with the purpose of enhancing the performance and experience of both recruiter and candidate by proposing a system that can handle Application Tracking and Career Prediction Model at the same time [@sippy_2021]. This tool is a research-based project, which is conducted by a group of undergraduate research student and their professor at the Thadomal Shahani Engineering College in India. The motivation for their research is that 60% of engineering students remain uncertain about their career prospect by the time of graduation, and they also want to provide an inexpensive recruitment tool for recruiters.
+
+#### Methodology
 
 1. Application Tracking Approach
 
@@ -175,6 +187,9 @@ In the Application Tracking end of the tool, Resume Scan evaluates the compatibi
 
 In order to implement the Career Prediction Model, Resume Scan first classifies the possible skills of candidates into different categories, i.e: Technical Skills, Management skills, Data Science, etc. Then, the tool extracts candidate skills from their actual resume and compares the skills list with the pre-stored skills in different domains. Finally, the tool will return the domain of career with the highest matching percentage to the user. 
 
+#### Limitation
+
+It is challenging to evaluate the efficacy of the system because this tool is not an open source project which is available to examine by any user. Hence, the limitation assessment for ResumeScan stems solely from the design of this tool's methodology. This tool's Application Tracking Approach maps candidate resume keywords to recruiter-entered keywords. This strategy may incorporate bias into the hiring process because it permits the recruiter to exclude candidates based on their own criteria. To provide career guidance, the Career Prediction Model Pipeline can only classify people's abilities into Technical, Management, and Data Science categories at this time. While the approach of classifying students' skills into distinct field is advantageous, the lack of more specific categories may result in an oversimplification of the position for which a student should apply. How does a candidate know, for example, whether to apply for web development, quality assurance, UI/UX developer, etc., if they are matched to the Technical sector?
 
 ### Job Scan
 
@@ -192,21 +207,21 @@ From the result of the Keyword Comparison section, the matching calculation may 
 
 Despite the tremendous benefit of Jobscan, Steph Cartwritght, a Job Search Strategist and Certified Resume Writer, asserted that this applications holds several drawbacks that job seeker should keep in mind when analyzing their Scan Report [@steph_2022], including:
 
-- Too much emphasize on matching score: The scanned score is based on the keyword matching with keywords identified by Jobscan, while the list of keyword that ATS use may be different. 
+- Too much emphasize on matching score: The scanned score is based on the keyword matching with keywords identified by Jobscan, while the list of keyword that ATS use may be different. Thus, the final score concluded by this tool may not reflect accurately on whether the candidate can land the job or not.
 
-- May include buzzwords such as passionate, encouraging, impact, etc. in the important keywords section - this can be a problem with keyword extraction algorithms.
+- May include buzzwords such as passionate, encouraging, impact, etc. in the important keywords section - this can be a problem with keyword extraction algorithms. The reason is the keyword attraction algorithms of ATS may only include nouns or proper nouns instead of a complete phrase with adjective plus nouns.
 
 - Some redundant features for monetization: Steph claimed that some Jobscan feature such as LinkedIn optimization and Cover Letter optimization are unnecessary as ATS will not scan cover letter, unlike what Jobscan claimed, and LinkedIn profile should remain simple and personalized as much as possible.
 
-
+After evaluating two distinct tools designed to solve the Applicant Tracking System algorithm, one of which is a student research project and the other of which is a successful business in the field, a number of drawbacks are identified. The issue with Resume Scan is the lack of sufficient data to automate the keyword extraction processes. In addition, the lack of detailed position information can be remedied by having an actual data set that includes job titles and job requirements to correlate the job title to a set of keywords, thereby matching the user to an actual job title as opposed to a general field of work. On the other hand, despite the fact that JobScan has been demonstrated to be effective by hiring coaches, the tool is quite expensive and includes an excessive of monetized features to maximize its revenue. Consequently, it is essential to develop a free tool that provides both constructive career advice and keyword recommendations.
 
 # Method of approach
 
 ## Approach proposal and reasoning
 
-Whilst one of the most prominent Resume Optimization tool - Jobscan claims that their service boosts interview callback chance by 300%, the major drawback of such a tool is: How's about the next step? With a resume consists of all important keyword, the client who uses JobScan can become the desired candidate for any job title. However, since JobScan solely suggests candidates to include more keywords and skills that a recruiter want from them for a specific title, candidates may have a false assumption that they can get a job with more keyword in their resume. The truth is, a good resume, regardless of how high the matching percentage it has to the job description, only have the power to help candidate improve the chance of getting an interview, not getting the job. In order to improve the chance of landing a job successfully, it is important to match the candidate to the job title that is favorable to their prior degree and experiences. Thus, the pipeline of Lander consists of two main steps:
+While one of the most prominent Resume Optimization tools, Jobscan, asserts that their service increases interview recall probability by 300 percent, the contentious issue with such a tool is: How about the following step? Getting an interview is only the first step in a lengthy employment process. Other rounds that are similarly challenging, such as aptitude tests, technical assessments, and behavioral interviews, await the candidate. Consequently, a resume keyword optimizer tool should not only consider how to create a resume that is as outstanding as possible, but it should also direct the user to a job that matches their skills. With a resume that contains all relevant keywords, a JobScan client can become the ideal candidate for any position. However, since JobScan solely suggests candidates include more keywords and skills that a recruiter wants from them for a specific title, candidates may have a deceptive belief that including more keywords on their resume will help them land a job. In reality, a strong resume, regardless of how closely it matches the job description in terms of percentage, can only increase a candidate's chances of landing an interview, not the job itself. To increase the likelihood of obtaining a job, it is essential to match the candidate with a job title that is compatible with their prior education and experience. Thus, the pipeline of Lander consists of two main steps:
 
-1. Match candidates to a cluster of job title in a job banks using Kmean prediction
+1. Match candidates to a cluster of job title in a job banks using Kmean prediction: clusters of job titles are determined by the similarity in the keyword and skills highlighted in their job description.
 
 2. Match candidates to top jobs within the cluster and give resume optimization suggestions
 
@@ -218,7 +233,7 @@ This method draws a big picture of job hunting for candidate, in which their des
 
 Lander workflow consists of three stages, including
 
-- Data Processing: This stage performs data cleansing on job bank to ensure all entries are consistent. Then the databased will be clustered into groups based on different skills requirements.
+- Data Processing: This stage performs data cleansing on job bank to ensure all entries are consistent. Then the job title will be cluster into groups based on the relevancy in skills requirement accross jobs. Jobs titles with a high similarity of desired skills will be group together. For example, front-end engineer titles across company should belong to a similar cluster.
 
 - Scoring System: This stage calculates the matching score between a resume and every job in one cluster using Cosine Similarity to narrow down the search and then using Phrase Matching technique to compute skill matching percentage
 
@@ -228,6 +243,7 @@ Lander workflow consists of three stages, including
 ### Data Preparation: 
 
 #### Preparing data for resume scanning
+
 1. Data retrieving
 
 The initial stage in developing an automated job scanning tool is gathering information, particularly real resumes and example job descriptions from various technical occupations. This study makes use of a job bank with 22,000 entries that Kaggle collected from Dice.com, a real job dashboard. This job bank has 12 data columns, each of which represents a different piece of essential job post information. For testing purposes, this project also makes use of a collection of 3 resumes retrieved from the author and an open source career document from Ohio University and Carnegie Mellon University. These resumes correlate to a similar level of seniority in the tech industry, which is entry level. All resumes are in PDF format, so PyPDF2 is used to extract the text from resumes. The Panda library serves as the primary tool for extracting and storing the database for job banks. The first step is to divide the dataframe into a sub-dataframe that only contains the three pieces of information that are crucial for calculation: "Job Title," "Job Description," and "Skills."
@@ -247,7 +263,18 @@ Example of one cleansing step
 
 ```
 
-The above code snippet performs data cleansing in the skills and job description column, in which only tokens that consists of natural language without special symbol can stay in the data set. Then, the skills and job description are stemmized, which is the process of reducing a word to its word stem that affixes to suffixes and prefixes or the roots. This action benefits the calculation process later on, as it improve the accuracy of cosine similarity calculation.
+The above code snippet performs data cleansing in the skills and job description column, in which only tokens that consists of actual skills information without special symbol can stay in the data set. This usage of regular expression is important as Then, the skills and job description are stemmized, which is the process of reducing a word to its word stem that affixes to suffixes and prefixes or the roots. This action benefits the calculation process later on, as it improve the accuracy of cosine similarity calculation.
+
+Additionally, the data cleansing procedure of skill set is more intense as the skills matching has to be an exact match. The important keyword is filtered out from the skills set as follow:
+
+```python
+
+for entity in skill:
+      if re.search("^[a-zA-Z0-9_ ][a-zA-Z0-9_ ]*[a-zA-Z0-9_]$", entity) and len(entity.split(" ")) < 3:
+        skills_cleaned.append(entity)
+```
+
+This regular expression rule ensure that the skills extracted from the skill column in an actual skill, not a long phrase of requirement as it only pass the word that start with an actual letter and contain no more than three words in a phrase.
 
 3. Data processing and final checking
 
@@ -255,9 +282,9 @@ In this stage, the data frame will become a simple and consistent format for fur
 
 -  Word tokenization: turn long text in resume and job description into token (single word) to make the analyzing process easier using Scipy
 
-- Stop words: Remove word that are meaningless for resume scanning and job description processing but tends to appear a lot. NLTK library have a built-in list of stop words that was utilized in this project
+- Stop words: Remove words that are meaningless for resume scanning and job description processing but tends to appear a lot. NLTK library have a built-in list of stop words that was utilized in this project, for example, some word appear with high volume that may alter the cosine similarity score such as: "and", "or", "of", etc,.. will be omited from the database.
 
-- Lemmatization: Globalizing the input entry by returning the text into its meaningful base form using WordNetLemmatizer
+- Lemmatization: Globalizing the input entry by returning the text into its meaningful base form.
 
 After this stage, a data frame called `data_eval` is formed, which consists of pre-processed texts for evaluations. 
 
@@ -360,9 +387,7 @@ After obtaining the clean data set, the first advance analyzer the evaluation of
 
 Specifically in this case, Cosine similarity between a resume (R) and a job description (JD) is calculated by:
 
-```
-            Cosine similarity (R, JD) = (R)( ̇JD) |JD|×|R|
-```
+            $ Cosine similarity (R, JD) = (R)( ̇JD) |JD|×|R| $
 In the vector space, the closer the cosine value to 1, the smaller the angle between vector and x-axis, the higher correlation between two documents. Even though, the theoretical explanation of Cosine document similarity seems complicated, this paper will not manually implement every single step of this concept. Instead, this paper optimizes the use of Sklearn, or Sckit-learn, which is a library that include a tremendous amount of essential Machine learning tools, inluding cosine similarity algorithm.
 
 After the solution is identified, it is then turned to actual function as follow:
@@ -406,11 +431,11 @@ def keyword_matching(text_resume, skill):
 
 The goal of this operation is to return a list of similar terms across two texts, hence this code snippet proposes a similar solution to the skill extraction procedure described before. The parameters for this `keyword matching` function in this instance are the content of the user's résumé and a list of skills associated with a job title. Every ability on the list of skills serves as the basis for the keyword-matching pattern. Matcher model in spaCy then searches the input resume for all similar phrases using this pattern. Following the discovery of all related key phrases, the matching percentage is determined by:
 
-```
-                              Amount of keyword matched
- matching percentage = _________________________________________  x 100
-                         Amount of keyword in Job Description
-```
+
+                              
+ $ matching percentage = frac{Amount of keyword matched}{ Amount of keyword in Job Description} x 100 $
+                        
+
 
 The final data frame called `match_df` will then include the matching percentage scores as a new column labeled "Matching Percentage." The top five job titles with the greatest percentage score are then selected from the vast data set and subjected to additional scrutiny. 'Streamlit setup.py' contains the actual calculation and ranking of matching scores.
 
@@ -423,6 +448,9 @@ Following the identification of the top 5 job titles, the tool will compare each
 One of this tool's main problems after the tool pipeline is finished is how time-consuming it is. This tool's fundamental function is text mining over large datasets, an already expensive process. Moreover, the skill search must be an absolute match, and any text normalization, such as lemmatization or stemmatization, is inappropriate because it could alter the skill's intended meaning. As a result, it is anticipated that this tool's initial time complexity will be near to Big O exponential. The first time the program was used, Phrase Matching and Cosine Similarity were run independently and unconnected, and it took a total of about 20 minutes to generate the final list of missing skills.
 
 The time complexity is then reduced by disabling unwanted pipeline while loading the english module from spacy, such as `ner`, `tagger`, and `parser`. This action itself helps accelerate the process to 13 minutes. By itself, this operation speeds up the procedure to 13 minutes. Cosine Similarity and Phrase Matching are consequently combined to change the matching workflow. Given that Phrase Matching is an absolute match but Cosine Similarity is a vectorized computation, the latter is much faster compare to the former. Hence, Cosine Similarity is utilized to reduce the search to 100 job titles before Phrase Matching is performed on those 100 job titles alone as opposed to the entire cluster. The last action is adding the `@st.cache` decoration to streamlit script since, despite the tool's performance on Google Colab with GPU power, streamlit is slow because it must be re executed each time. After all the steps above have been taken, the current time spent using the web interface is 1 minute, 42 seconds. 
+
+### Result
+
 
 # Experiments
 
