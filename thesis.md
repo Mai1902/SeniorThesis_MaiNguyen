@@ -94,23 +94,25 @@ With the hiring freeze and the increase in demand for experienced workers in tec
 
 As recruiter utilize ATS to increase the performance of their job, the candidate also have the right to apply Lander in their job application journey to increase the chance of getting into desired position. Moreover, the ATS system, if falls into wrong hand, may turn to a systematic bias in the process of making hiring decision as recruiter can modify the scoring or ranking system to make sure that candidate fit their narrative instead of matching the job requirement, so Lander can be a way for candidates to offset these hidden scheme for hiring if any. 
 
-## Ethical Implications (TODO)
+## Ethical Implications
+
+Prior to discussing Methodology and Experiment, the author's initial concern about the tool's use is followed by a list of ethical implications. Consequently, the comprehensive discussion of the following ramifications will be contained in the conclusion later on in this paper.
 
 1. Data collection issue
 
-The database used for Lander is adopted from Kaggle, and this dataset is scraped from Dice.com, a job board website. Even though dice allows scraping and Kaggle provides open source dataset, this tool will use this database to support job seeker and may direct the user directly to the original job post, not to dice.com, which may reduce the revenue of this job board website. 
+The database used for Lander is adopted from Kaggle, and this dataset is scraped from Dice.com, a job board website. Even though dice allows scraping and Kaggle provides open source dataset, this tool will use this database to support job seeker and may direct the user directly to the original job post, not to Dice.com, which may reduce the revenue of this job board website as Dice.com make money from website traffic. This may pose a problem that Lander is using Dice.com data to harm Dice.com itself.
 
 2. Potential social issue
 
-This tool helps job seeker to identify suitable jobs and leverage their resume using algorithms, posing a big question - Will ATS/recruiter discriminate against using this tool?
+This tool helps job seeker to identify suitable jobs and leverage their resume using algorithms, posing a big question - Will ATS/recruiter discriminate against using this tool? If recruiter actually has an unfavorable look on candidate who utilize ATS-counter tool, then Lander will become a tool that is consider harmful to user instead of being helpful.
 
 3. Potential misuse - unintended consequence 
 
-Does this tool tell people to lie, as candidate may include the keyword that are not applied to them.
+As Lander intend to recommend people keywords that they should include in their resume in order to boost the chance of getting through the resume screening round. One critical question that this tool need to address later is: "Does this tool tell people to lie, as candidate may include the keyword that are not applied to them." In order to resolve this issue, Lander need to make a clear statement on how the tool should be use and that having only a good resume does not result in a job landing.
 
 4. Information privacy
 
-As an application that prompting resume and other private information from user, it is prone to have confidentiality problem. So, there is a need to make sure that the information in the resume is secured.
+As an application that prompting resume and other private information from user, Lander is prone to have confidentiality problem. Hence, there is a need to make sure that the information of the user is secured in the Methodology section. 
 
 # Related work
 
@@ -246,7 +248,7 @@ Lander workflow consists of three stages, including
 
 1. Data retrieving
 
-The initial stage in developing an automated job scanning tool is gathering information, particularly real resumes and example job descriptions from various technical occupations. This study makes use of a job bank with 22,000 entries that Kaggle collected from Dice.com, a real job dashboard. This job bank has 12 data columns, each of which represents a different piece of essential job post information. For testing purposes, this project also makes use of a collection of 3 resumes retrieved from the author and an open source career document from Ohio University and Carnegie Mellon University. These resumes correlate to a similar level of seniority in the tech industry, which is entry level. All resumes are in PDF format, so PyPDF2 is used to extract the text from resumes. The Panda library serves as the primary tool for extracting and storing the database for job banks. The first step is to divide the dataframe into a sub-dataframe that only contains the three pieces of information that are crucial for calculation: "Job Title," "Job Description," and "Skills."
+The initial stage in developing an automated job scanning tool is gathering information, particularly real resumes and example job descriptions from various technical occupations. This study makes use of a job bank with 22,000 entries that Kaggle collected from Dice.com, a real job dashboard [@promptcloud_2017]. This job bank has 12 data columns, each of which represents a different piece of essential job post information. For testing purposes, this project also makes use of a collection of 3 resumes retrieved from the author and an open source career document from Ohio University and Carnegie Mellon University. These resumes correlate to a similar level of seniority in the tech industry, which is entry level. All resumes are in PDF format, so PyPDF2 is used to extract the text from resumes. The Panda library serves as the primary tool for extracting and storing the database for job banks. The first step is to divide the dataframe into a sub-dataframe that only contains the three pieces of information that are crucial for calculation: "Job Title," "Job Description," and "Skills."
 
 2. Data cleaning
 
@@ -270,7 +272,8 @@ Additionally, the data cleansing procedure of skill set is more intense as the s
 ```python
 
 for entity in skill:
-      if re.search("^[a-zA-Z0-9_ ][a-zA-Z0-9_ ]*[a-zA-Z0-9_]$", entity) and len(entity.split(" ")) < 3:
+      if re.search("^[a-zA-Z0-9_ ][a-zA-Z0-9_ ]*[a-zA-Z0-9_]$", entity) 
+      and len(entity.split(" ")) < 3:
         skills_cleaned.append(entity)
 ```
 
@@ -306,9 +309,9 @@ Based on definition, job description is a formal account of an employee's respon
 
 The work flow of skills extraction is as follow:
 
-![Comprehensive skills extraction workflow](images/data_snippet.png)
+![Comprehensive skills extraction workflow](images/skills_extraction_workflow.png)
 
-Initially, the skills in every profession in the dataset are combined with an external list of technical skills from a dataset on Kaggle to build a list of skills for all technical-related occupations. Following that, any redundant terms in this list are reduced to a single instance, and unrelated terms such as *_See below*, *_See job description*, etc. are eliminated. 
+Initially, the skills in every profession in the dataset are combined with an external list of technical skills from a dataset on Kaggle to build a list of skills for all technical-related occupations. Following that, any redundant terms in this list are reduced to a single instance, and unrelated terms such as "See below", "See job description", etc. are eliminated. 
 
 ```python
 def keyword_extracting(text_jd, text_skill):
@@ -387,7 +390,10 @@ After obtaining the clean data set, the first advance analyzer the evaluation of
 
 Specifically in this case, Cosine similarity between a resume (R) and a job description (JD) is calculated by:
 
-            $ Cosine similarity (R, JD) = (R)( ̇JD) |JD|×|R| $
+$$
+\text{Cosine similarity {(R, JD)}} = \frac{(R)(JD)}{|JD|*|R|}
+$$
+
 In the vector space, the closer the cosine value to 1, the smaller the angle between vector and x-axis, the higher correlation between two documents. Even though, the theoretical explanation of Cosine document similarity seems complicated, this paper will not manually implement every single step of this concept. Instead, this paper optimizes the use of Sklearn, or Sckit-learn, which is a library that include a tremendous amount of essential Machine learning tools, inluding cosine similarity algorithm.
 
 After the solution is identified, it is then turned to actual function as follow:
@@ -432,9 +438,9 @@ def keyword_matching(text_resume, skill):
 The goal of this operation is to return a list of similar terms across two texts, hence this code snippet proposes a similar solution to the skill extraction procedure described before. The parameters for this `keyword matching` function in this instance are the content of the user's résumé and a list of skills associated with a job title. Every ability on the list of skills serves as the basis for the keyword-matching pattern. Matcher model in spaCy then searches the input resume for all similar phrases using this pattern. Following the discovery of all related key phrases, the matching percentage is determined by:
 
 
-                              
- $ matching percentage = frac{Amount of keyword matched}{ Amount of keyword in Job Description} x 100 $
-                        
+$$
+\text{matching percentage} = (\frac{\text{Amount of keyword matched}}{\text{Amount of keyword in Job Description}}) * 100
+$$             
 
 
 The final data frame called `match_df` will then include the matching percentage scores as a new column labeled "Matching Percentage." The top five job titles with the greatest percentage score are then selected from the vast data set and subjected to additional scrutiny. 'Streamlit setup.py' contains the actual calculation and ranking of matching scores.
@@ -451,12 +457,35 @@ The time complexity is then reduced by disabling unwanted pipeline while loading
 
 ### Result
 
+Lander is currently live in a public repository at [Link to Lander](https://github.com/Mai1902/landing) and is unable to support an actual web interface at this moment. Thus, in order to use the tool, user need to clone the repository into their device using:
+
+```
+git clone git@github.com:Mai1902/landing.git
+```
+
+Then, all dependencies used for this project can be install by:
+
+```
+poetry install
+```
+
+Once all dependencies is downloaded, user can run the tool by: 
+
+```
+streamlit run streamlit_setup.py
+```
+
+The command will lead user to a pop up window where they can upload their resume and receive job titles recommendation and keywords recommendation.
+
+![User Upload Resume](images/lander_resume_input.png)
+
+![User Receive Job and Keyword Recommendation](images/lander_report_1.png)
 
 # Experiments
 
-To reinterate, the optimal purpose of this tool is to help students or those who wish to pass through the resume scanning round in the age of technology-driven recruiting. The tool outcome returns a list of keyword suggestion that if user include these keywords in there resume, their chance of getting pass ATS is higher. It is best to verify the matching score difference for a resume before and after utilizing Lander using an ATS software to see if such an increment is occurring or not. Nevertheless, after doing extensive research on various ATS software, it became clear that students would not be able to afford their service because ATS is a blackbox program that discourages other people from trying to conduct research. No matter how small the size of an ATS software may be, only legitimate businesses are allowed to buy and utilize it. This choice is comprehensible given that ATS is a comprehensive recruiting site that assists with storing candidate data, sending out announcements, monitoring the recruitment process, etc. in addition to being a resume scanner.
+To reinterate, the optimal purpose of this tool is to help students or those who wish to pass through the resume scanning round in the age of technology-driven recruiting. The tool outcome returns a list of keyword suggestion that if user include these keywords in there resume, their chance of getting pass the initial resume screening is higher. It is best to verify the matching score difference for a resume before and after utilizing Lander using an ATS software to see if such an increment is occurring or not. Nevertheless, after doing extensive research on various ATS software, it became clear that students would not be able to afford their service because ATS is a blackbox program that discourages other people from trying to conduct research. No matter how small the size of an ATS software may be, only legitimate businesses are allowed to buy and utilize it. This choice is comprehensible given that ATS is a comprehensive recruiting site that assists with storing candidate data, sending out announcements, monitoring the recruitment process, etc. in addition to being a resume scanner.
 
-As ATS cannot be utilized for experimental purposes, utilizing alternative software that mimics the ATS scanning technique and generates some form of matching score for further quantitative evaluation is the other proper resort. Hence, Jobscan, which was extensively discussed in Chapter 2, will be used to evaluate Lander's accuracy. The reasons behind Job Scan is the ideal choice in this circumstance is this software has more than 1 million job seekers as clients, it is also an actual publicized ATS-counter tool, which has been acknowledged publically by job hunt coach as one of the useful apps to counter ATS algorithm.. According to Jobscan, clients generally see a 30% improvement in their own resume scanning round passing rate. Furthermore, Chapter 2 revealed that Job Scan is designed to outperform particular ATS programs because they are aware of a secret layer of real ATS products. So, in this scenario, Lander can be tested using Job Scan.
+As ATS cannot be utilized for experimental purposes, utilizing alternative software that mimics the ATS scanning technique and generates some form of matching score for further quantitative evaluation is the other proper resort. Hence, Jobscan, which was extensively discussed in Chapter 2, will be used to evaluate Lander's accuracy. The reasons behind Job Scan is the ideal choice in this circumstance is this software has more than 1 million job seekers as clients, it is also an actual publicized ATS-counter tool, which has been acknowledged publically by job hunt coach as one of the useful apps to counter ATS algorithm.. According to Jobscan, clients generally see a 30% improvement in their own resume scanning round passing rate. Furthermore, Chapter 2 revealed that Job Scan is designed to outperform particular ATS programs because they are aware of a secret layer of real ATS products. So, in this scenario, Lander can be tested using Job Scan [@jobscan_2023].
 
 Job Scan's main work flow is to take in the resume and job description, predict the job title from the job description, and return a list of skills highlighted in the job description and in jobs with similar job titles. It will then compare this list of skills to the resume and calculate the score based on the number of matched skills. The final JobScan score consists of resume formatting, skills matching, and searchability - which represents the ability of this resume to appear in recruiter searches. The component of searchability scoring is determined by whether personal information is mentioned clearly, whether work history includes the searched job title, and suitability with the job, which is calculated by matching keywords score.
 
@@ -532,7 +561,7 @@ As explained in chapter 2, the main principal of score computation in JobScan is
 
 The graph representing the change in score is as follow: 
 
-![Experiment Graph](images/evaluation_graph.png)
+![Experiment Result](images/experiement_result.png)
 
 The red column represents score after using Lander and blue column represents score before using Lander, with yellow line represent the fluctuation in the change in score. The gragh asserts that the score after using Lander is always higher than the score before, which is the evidence that the usage of Lander actually increase the matching score. The yellow line is higher across resume 3 compare to resume 2 is evidence for different type of job may produce different changes in score.
 
@@ -585,17 +614,17 @@ The web interface of Lander is also very user friendly, in which there are only 
 On the Analyzer page, the tool required only two inputs from the user in order to perform matching procedures: a PDF version of their résumé and their seniority level. Whereas other competing tools, such as Job Scan and ResumeWorded, need candidates to give a job description in order to perform a score algorithm, this software does not. Lander aims to shed light on those who are unable to find a job title that is a perfect match for their skill set. While the number of skills necessary for technical-related occupations fluctuates daily, students frequently become overwhelmed by the variety of job titles. 
 
 
-The Database page allows users to get the extensive lsit of extracted skills used by Lander. The design of this feature represents the hope that other developers would utilize this database to advance the job search capabilities for other individuals, or simply to assist tech industry workers in navigating critical skill sets. The second function of this website is 'Cluster Display,' in which the user can display the dominating keywords in 26 clusters, representing 26 distinct fields of technical vocations, and the job titles that correspond to each cluster. In addition to assisting users in understanding how jobs are grouped in Lander, this function may assist users in gaining a broader understanding of the numerous fields in Computer Science and the expertise that are highlighted and in demand in each field. This investigation might help job seekers determine their next move if they wish to switch fields or analyze the likelihood of obtaining employment in each field.
+The Database page allows users to get the extensive list of extracted skills used by Lander. The design of this feature represents the hope that other developers would utilize this database to advance the job search capabilities for other individuals, or simply to assist tech industry workers in navigating critical skill sets. The second function of this website is 'Cluster Display,' in which the user can display the dominating keywords in 26 clusters, representing 26 distinct fields of technical vocations, and the job titles that correspond to each cluster. In addition to assisting users in understanding how jobs are grouped in Lander, this function may assist users in gaining a broader understanding of the numerous fields in Computer Science and the expertise that are highlighted and in demand in each field. This investigation might help job seekers determine their next move if they wish to switch fields or analyze the likelihood of obtaining employment in each field.
 
 ## Future Work
 
 ### Continuously update the dataset
 
-The last time this dataset was updated on Kaggle was a year ago, which implies that it can only be used for suggestion purposes and cannot genuinely introduce students to newly-opened positions. T Given the scale of this information, technology jobs are subject to abrupt change at any time due to the industry's rapid pace. Consequently, the skill set of specific jobs in this dataset may be deemed obsolete in comparison to the current skill requirements for the same job title. Thus, it is essential to regularly update this information with the most recent open job postings by collecting live data from dice.com or other job portal websites such as Indeed, ZipRecruiter, and others. 
+The last time this dataset was updated on Kaggle was a year ago, which implies that it can only be used for suggestion purposes and cannot genuinely introduce students to newly-opened positions. Given the scale of this information, technology jobs are subject to abrupt change at any time due to the industry's rapid pace. Consequently, the skill set of specific jobs in this dataset may be deemed obsolete in comparison to the current skill requirements for the same job title. Thus, it is essential to regularly update this information with the most recent open job postings by collecting live data from dice.com or other job portal websites such as Indeed, ZipRecruiter, and others. 
 
 After updating the dataset, the keyword extraction technique should be repeated, and job postings older than six months should be archived and eliminated to retain the relevancy of the skills set. . By this way, the job suggestion and skill suggestion model will yield a better result.
 
-### Expand search outside of technical related job
+### Expand search outside of technical related jobs
 
 As of right now, the only type of job that Lander can help process is techical related job; however, this project actually started out with the purpose to help any struggle job seeker, especially graduating students to figure out the suitable occupation based on their skills and help them with the application process. However, the time complexity of text mining procedures is beyond imagination, which may leads to bad user experience if every type of job is included. 
 
@@ -607,11 +636,13 @@ However, it is feasible to help non-technical students to identify missing keyph
 
 - Step 3: Return missing keyphrase by excluding matched keyphrase.
 
-Nevertheless, an optimal approach for job position match procedure for other job outside of tech has yet been discovered by this paper in the mean time.
+Nevertheless, an optimal approach for job position match procedure for other job outside of tech has yet been discovered by this paper in the mean time. Additionally, this feature can only be integrated if a complete set of skills keyword in the field is available to extract from.
 
-### Build the tool on other web interface
+### Build the tool on other web interface and improve UI/UX
 
-As streamlit is quite slow when processing keyphrase matching procedure, the expand of dataset later on or any attemp to add more feature to Lander may slow this tool down even more, which will excarcebate user experience. Thus, it is important to migrate Lander to other web interface framework such as Dash, which is quite similar to Streamlit but not entirely open-source, or Flask, which is open-source but much more complicated to build compare to Streamlit.
+Considering that streamlit is quite inefficient during the keyphrase matching procedure, the expansion of datasets in the future or any attempt to add more features to Lander could lag this tool even further, destroying the user experience. Thus, it is essential to migrate Lander to an alternative web interface framework, such as Dash, which is quite similar to Streamlit but not wholly open-source, or Flask, which is open-source but considerably more difficult to build than Streamlit. 
+
+Moreover, the UI/UX of the streamlit website is currently only at a functional level, not a comfortable level. Increasing page performance to produce a higher conversion rate was one of the most important improvements that needed to be made immediately. To achieve this, the internal algorithm used to calculate position match and keyword recommendation should be analyzed and improved, possibly by discovering a faster phrase-matching methodology.  Another enhancement is the visual representation of resume matching. It would be beneficial if a user's resume and a matched job description could be displayed side by side with matched keywords highlighted. This will be beneficial to user when they want to edit their resume accordingly.
 
 ### Examine the tool by interview rate
 
@@ -619,39 +650,50 @@ Despite the fact that Lander is now verified by the increase in Job Scan matchin
 
 The principle of the experiment is to have a group of job seeker using Lander and apply to job. This group should consist of more than 100 individuals with random expertise in technology in order to arrive as an acceptable standard deviation for the test. The experiment will be conducted by matching a group of 100 candidates, divided into fifty groups of two individuals each, with a similar job where the difference in score is less than 10 points. Then, these two individuals will apply to the matching position, one with the Lander suggestion (test group) and the other without (control group). Then, note the rate of test group and control group first scanning round pass rates. Lander would be deemed effective if, on average, the passing rate of the test group is greater than that of the control group by more than 5 percentage points.
 
-## Future Ethical Implications and Recommendations
+## Ethical Implications
 
-### Data collection issue: 
+### Data collection issue
 
-The database used for Lander is adopted from Kaggle, and this dataset is scraped from Dice.com, a job board website. Even though dice allows scraping and Kaggle provides open source dataset, this tool will use this database to support job seeker and may direct the user directly to the original job post, not to dice.com, which may reduce the revenue of this job board website. However, as the dataset is obsolete and the majority of the job in the dataset are expired, the job title in the output is only a suggestion for the type of job, not to that specific job position itself. 
+The Lander database is adopted from Kaggle, and this dataset is collected from the job board website Dice.com. Even though Dice permits scraping and Kaggle provides an open-source dataset, this tool will utilize this database to assist job seekers and may direct the user directly to the original job posting, rather than dice.com, which could reduce the revenue of this job board website. Due to the fact that the dataset is obsolete and the majority of the jobs in the dataset have expired, the job title in the output is merely a suggestion for the type of job, not the specific job position itself. Therefore, the candidate cannot access the URL, which has no impact on the website. In addition, Lander may help promote Dice.com by directing users to this employment board, since the majority of job links still point to this site.
 
-### Potential social issue: 
+Nonetheless, the age of the collected data is an additional data collection related issue with Lander. This obsolete may negatively impact the tool's employment matching prediction and keyword prediction. The reason for this is that the tech employment market is constantly changing, and the skills that are utilized today may become obsolete or be completely replaced by artificial intelligence in the future. Consequently, using an out-of-date data set for career advice may mislead users into applying for jobs that were suitable for them at the time the data was posted, but are no longer now.
 
-This tool helps job seeker to identify suitable jobs and leverage their resume using algorithms, posing a critical question: Will ATS/recruiter discriminate against candidates who use this tool? Whilst this tool is newly created and has yet to come to ATS/recruiter sights, there hasn't been any research paper or blog post discuss on this issue on a somewhat similar tool like JobScan. JobScan does not only help to optimize resume but also help to elevate complete application portal such as cover letter, social medias, LinkedIn, etc and also provide some hidden tips to overcome several specific ATS. Hence, recruiter or ATS software in general may not hold inhospitable viewpoint on ATS-counter software. 
+One could also contend that Lander could benefit from this dataset that does not belong to the application. However, it is guaranteed that the author has no intention of turning Lander into a commercial application. Lander will always remain a completely open-source, accessible tool for those who struggle with the job application process.
 
-### Potential misuse - unintended consequence:
+### Potential social issue
 
-Another controversial issue posed by this tool is: Does Lander tell people to lie, as candidate may include the keyword that are not applied to them? Whilst there is no way to ensure that no Lander user would exploit this tool to lie about their competency, this tool has no intend to encourage people to do so. Additionally, these candidates will be disqualified later on in the later stage of recruiting process so if candidates are dishonest about their skills, there will be no critical impact on such an act. 
+This tool helps job seeker to identify suitable jobs and leverage their resume using algorithms, posing a critical question: Will ATS/recruiter discriminate against candidates who use this tool? Whilst this tool is newly created and has yet to come to ATS/recruiter sights, there hasn't been any research paper or blog post discuss on this issue on a somewhat similar tool like JobScan. JobScan does not only help to optimize resume but also help to elevate complete application portal such as cover letter, social medias, LinkedIn, etc and also provide some hidden tips to overcome several specific ATS. Hence, recruiter or ATS software in general may not hold inhospitable viewpoint on ATS-counter software.
+
+However, despite the fact that job application optimization tools are not currently considered harmful, they may pose a threat to Human Resources in the future as the Applicant Tracking System may become confounded by the large number of candidates with similar profiles using the same tool to apply for the same job. Currently, ATS-counter tools are not considered prevalent, so only those who are aware of Applicant Tracking Systems will use them. Soon, however, the majority of applicants will be cognizant of the software and will employ optimization software to circumvent it. When this occurs, ATS will no longer be able to filter out the required amount of candidates, and even human recruiters will have a difficult time digesting a large number of resumes that are perfectly suited to the position. This scene has yet to emerge, but it ought not to take too long before it does. And when this occurs, recruiters, human resource professionals, and Applicant Tracking System executives may not turn a blind eyes on ATS-counter software such as Lander or Jobscan. The reason is if this happen, Lander will no longer be the tool 
+that help people.
+
+### Potential misuse - unintended consequence
+
+Another controversial issue posed by this tool is: Does Lander tell people to lie, as candidate may include the keyword that are not applied to them? Whilst there is no way to ensure that no Lander user would exploit this tool to lie about their competency, this tool has no intend to encourage people to do so. Additionally, these candidates will be disqualified later on in the later stage of recruiting process so if candidates are dishonest about their skills, there will be no critical impact on such an act. The reason is most if not all tech company does require candidates to take an intensive technical assessment once they pass the initial screening round. In this round, the company will test only on the skills that are deemed important to this job title, for example, the Data Analyst position may only test on SQL or Python skills, and candidates can still lie that they know how to use C. In this case, if the candidate is good enough in SQL and Python to pass the test, then the fact that they lie on their C competency will be overlooked by recruiters. This example is just to show that the best way to test if the candidate is qualified for the job or not is through assessment, which will be carried out by the recruiter.
 
 Additionally, Lander is a tool to help people counter the unfair system that ATS introduced, as it relies on the already biased historical recruiting data to make new hiring decision or it may look for some certain keywords that user forgot, or deemed unnecessary to put into their resume.
 
-### Information privacy: 
+However, despite the fact that Lander is ostensibly free for anyone who wishes to use it, some staffing agencies may use it to match their clients with suitable employment and charge them a substantial fee. It is extremely difficult to regulate this type of exploitative behavior because it is impossible to determine the true intent of those who utilize Lander. Even though Lander can attempt to collect users' personal information to ensure that they are using this tool in a non-profitable manner, doing so will raise a crucial privacy concern. With Lander being an open-source project, unauthorized data collectors will have ample opportunity to take user data without difficulty. 
 
-As an application that prompting resume and other private information from user, it is prone to have confidentiality problem. So, there is a need to make sure that the information in the resume is secured. In Lander, this tool is built without a data storing end, means whatever input user provide will be removed after their session. This action will ensure that Lander does not and will not have any intention to retain user's confidential data for commercial or profit usage.  
+### Information privacy
+
+As an application that requests a user's resume and other private information as the input, many believe Lander is susceptible to privacy issues. Therefore, it is necessary to ensure that the resume's information is protected. In Lander, this tool is built without a data storage endpoint, which means that any user input is discarded at the conclusion of their session. This action will ensure that Lander has no intention of retaining users' confidential information for commercial or profit-driven purposes. Lander's performance is, however, do suffer from the disadvantage of this strategy. The reason is incorporating a feedback loop that requires users to leave behind some of their confidential information, such as resume content, job titles applied for, application outcome, etc., is one of the most effective ways to enhance an algorithm for predictive analysis. With a feedback loop, Lander will be able to deliver personal recommendation based on the trend in job application of other candidate and the actual picture of hiring using real hiring insights. Lander is currently attempt to optimize the prediction by only expanding the job input data. However, as a result, the performance may not be as remarkable as other tools that collect user information.
+
 
 ## Conclusions
 
-Comptia+ published a report in February 2023 highlighting the drastic reduction in newly opened positions in the tech sector, which has dropped to as low as the number of job vacancies during the peak on Covid-19 - September 2020. 
+CompTiA+ published a report in February 2023 highlighting the drastic reduction in newly opened positions in the tech sector, which has dropped to as low as the number of job vacancies during the peak of Covid-19 - September 2020. 
 
 ![New job status [@comptia]](images/job_open_state.png) 
 
-The reason for this decrease is that the tech industry is oversaturated with talent hired between 2021 and 2022. During that time, the pandemic transformed the most of of regular routine into remote-based activity, which stimulated the rapid expansion of tech-based companies and start-ups. This circumstance draws a lot of money and success to the tech industry, so enterprises need to have a lot of new tech workers. Even large corporations presume that this astounding situation will last eternally since many projections about the shifts in consumer habits have been extensively examined, and most study leads to the conclusion that people will continue to rely on technology firms products for the **new normal**. Nevertheless, in 2023, when the pandemic can be deemed over and all pandemic preventative measures policies have been lifted, people return to normal life and seemed to not miss technology all that much, as evidenced by the fall of Zoom - the pandemic's superstar. According to Reuters, Zoom shares have slumped by 90% since the peak of the pandemic [@aditya_soni_2022]. 
+The reason for this decrease is that the tech industry is oversaturated with talent hired between 2021 and 2022[@griffith_2022]. During that time, the pandemic transformed the most of of regular routine into remote-based activity, which stimulated the rapid expansion of tech-based companies and start-ups. This circumstance draws a lot of money and success to the tech industry, so enterprises need to have a lot of new tech workers. Even large corporations presume that this astounding situation will last eternally since many projections about the shifts in consumer habits have been extensively examined, and most study leads to the conclusion that people will continue to rely on technology firms products for the "new normal". Nevertheless, in 2023, when the pandemic can be deemed over and all pandemic preventative measures policies have been lifted, people return to normal life and seemed to not miss technology all that much, as evidenced by the fall of Zoom - the pandemic's superstar. According to Reuters, Zoom shares have slumped by 90% since the peak of the pandemic [@aditya_soni_2022]. 
 
 ![Zoom state [@aditya_soni_2022]](images/zoom_state.png) 
 
 The demise of Zoom and other tech companies explains why enterprises have recently laid off workers, including tenured employees, and freeze-hire at the same time. Graduating students who received job offers last year had their offers rescinded as a consequence of a shortage of revenue in businesses of all sizes. According to the New York Times, the number of college students with degrees in computer science has tripled between 2011 and 2021, while being projected to grow even further in the next five years [@singer_huang_2022]. The upsurge in the amount of tech students, as opposed to the dramatic decrease in newly opened tech positions, forecasts how competitive the tech job market will be in the years ahead. For instance, Roblox, a rising firm in the gaming industry, anticipates receiving over 50 000 applications to fill 300 intern positions this summer [@singer_huang_2022]. This astonishing amount is equivalent to 0.6% acceptance rate, which is 10 times harder to get in Harvard, and whoever make it in can be considered successes in shooting for the moon.  
+This gloomy scenario does not only applicable to pandemic star such as Zoom or Roblox, as indicated in the Introduction section of this paper, giant tech company such as FANGG are also suffered from the dramatic decrease in revenue and have no choice but the cut headcounts to avoid worse crisis.
 
-Lander was motivated by the hardships that students in Allegheny College's department of computer science, students in the tech industry, and the author herself have faced. In the age of keyword-driven recruiting, determining what type of job to apply for and what keywords to include in the resume is a decisive factor as to whether the candidate can pass the ATS initial screening. As a result, the optimal aim of Lander is to alleviate some of the pressure that fellow students and job seekers face when seeking employment in this new age of recruitment. With Lander, hope that this tool can somewhat help job seekers actually shoot for the moon!
+Lander was motivated by the hardships that students in Allegheny College's department of computer science, students in the tech industry, and the author herself have faced. In the age of keyword-driven recruiting, determining what type of job to apply for and what keywords to include in the resume is a decisive factor as to whether the candidate can pass the ATS initial screening. As a result, the optimal aim of Lander is to alleviate some of the pressure that fellow students and job seekers face when seeking employment in this new age of recruitment.
 
 # References
 
