@@ -299,7 +299,7 @@ After trials of clustering jobs based on given skills on the input job data, an 
 
 Prior to any data cleansing and normalization, the whole input data holding job information is as follow:
 
-![Snippet of initial data](images/data_snippet.png)
+![Snippet of initial data](images/data_initial.png)
 
 According to the above dataset, the variation in number of skills in `skills` column is tremendous and certainly missing skills related to the job. For example, in row 2, for job title of `Automation Test Engineer`, the only skill listed in the skills column is `See Below`, which does not actually providing the skill needed for a Automation Tester. Hence, it is imperative to have a solution to fill the skills column with relavant skills according to the job description and remove millacenous information such as *_See below_*, *_See job description_*, etc. The reason is the input for clustering algorithm are skills in skills column, making job having similar data in skills columns mapped together in a cluster. Hence, an adaquate amount of skills or incorrect skills in each row contributes to the false negative clustering output. 
 
